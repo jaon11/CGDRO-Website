@@ -1,13 +1,20 @@
 site_name: CGDRO Documentation
 site_description: Comprehensive documentation for CGDRO Python and R packages.
-copyright: Copyright © 2025
+copyright: "Copyright © 2025"
+
+use_directory_urls: true
 
 theme:
   name: material
-  language: en      
+  custom_dir: overrides
+  language: en
+  logo: assets/logo.png
+  favicon: assets/logo.png
   features:
-    - navigation.instant
+    #- navigation.instant
     - navigation.sections
+    - navigation.tabs           # <— add
+    - navigation.tabs.sticky    # <— keeps tabs in header while scrolling
     - navigation.top
     - toc.follow
     - content.code.copy
@@ -15,14 +22,19 @@ theme:
     - search.highlight
   palette:
     - scheme: default
-      primary: indigo
-      accent: indigo
-    - scheme: slate
+      primary: "#80AF7E"
+      accent:  "#B4D269"
       toggle:
         icon: material/weather-night
         name: Switch to dark mode
-      primary: indigo
-      accent: indigo
+    - scheme: slate
+      primary: "#9CCF9C"
+      accent:  "#EBCB64"
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+
 
 plugins:
   - search:
@@ -46,14 +58,18 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.details
   - pymdownx.tabbed
+  - attr_list   
 
 extra_javascript:
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
+extra_css:
+  - stylesheets/extra.css       
+
 extra:
-  version:
-    provider: mike
-  social:                       # 页脚 GitHub 图标
+  #version:
+   # provider: mike
+  social:                         # stays for footer icons
     - icon: fontawesome/brands/github
       link: https://github.com/jaon11/CGDRO-Py
       name: CGDRO Python repo
@@ -63,19 +79,30 @@ extra:
 
 nav:
   - Home: index.md
+  - Introduction:
+      - Overview: setup/intro.md
+      - Linear Regression (lowdim): setup/reg_ld.md
+      - Linear Regression (highdim): setup/reg_hd.md
+      - Regression (machine learning): setup/reg_ml.md
+      - Classification: setup/cls.md
   - Python Package:
-    - Overview: python/index.md
-    - Getting Started: python/getting-started.md
-    - API Reference: python/api.md
-    - Examples:
-      - Demo Notebook: python/examples/demo.ipynb
+      - Getting Started: python/index.md
+      - API Reference: python/ref.md
+      - Tutorials:
+          - Linear Regression (lowdim): python/reg_ld.ipynb
+          - Linear Regression (highdim): python/reg_hd.ipynb
+          - Regression (machine learning): python/reg_ml.ipynb
+          - Classification: python/cls.ipynb
   - R Package:
-    - Overview: r/index.md
-    - Getting Started: r/getting-started.md
-    - Reference: r/reference.md
-    - Tutorials:
-      - Tutorial 1: r/articles/tutorial.md
-  - Source:
-    - Python repo ↗: https://github.com/jaon11/CGDRO-Py
-    - R repo ↗: https://github.com/jaon11/CGDRO
-  - Changelog: changelog.md
+      - Getting Started: R/index.md
+      - API Reference: R/ref.md
+      - Tutorials:
+          - Linear Regression (lowdim): R/reg_ld.ipynb
+          - Linear Regression (highdim): R/reg_hd.ipynb
+          - Regression (machine learning): R/reg_ml.ipynb
+          - Classification: R/cls.ipynb
+  - About:
+      - Authors: about/authors.md
+  - "Python repo ↗": https://github.com/jaon11/CGDRO-Py
+  - "R repo ↗": https://github.com/jaon11/CGDRO
+

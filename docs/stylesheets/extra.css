@@ -1,0 +1,254 @@
+/* ================================
+   CGDRO — Site Extras (Material MkDocs)
+   File: docs/stylesheets/extra.css
+   ================================ */
+
+/* ---- Brand color variables (light mode defaults) ---- */
+:root {
+  --cgdro-lightgreen: #80AF7E;   /* Light Green */
+  --cgdro-yellowgreen: #B4D269;  /* Yellow-Green */
+  --cgdro-gold: #EBCB64;         /* Golden Yellow */
+}
+
+/* ======================================
+   HOMEPAGE FULL-BLEED (no sidebars)
+   ====================================== */
+[data-md-page="index"] .md-main        { padding: 0; }
+[data-md-page="index"] .md-main__inner { margin: 0; }
+[data-md-page="index"] .md-content     { margin: 0; max-width: none; }
+[data-md-page="index"] .md-content__inner { margin: 0; padding: 0; }
+[data-md-page="index"] .md-sidebar--primary,
+[data-md-page="index"] .md-sidebar--secondary { display: none; }
+
+/* ===== Fix homepage grid so content starts flush under header ===== */
+[data-md-page="index"] .md-main__inner {
+  /* kill the default 3-col grid (sidebar | content | toc) */
+  grid-template-columns: 0 minmax(0, 1fr) 0 !important;
+}
+[data-md-page="index"] .md-content {
+  grid-column: 1 / -1 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  max-width: none !important;
+  width: 100% !important;
+}
+[data-md-page="index"] .md-content__inner,
+[data-md-page="index"] .md-typeset,
+[data-md-page="index"] .md-grid {
+  margin: 0 !important;
+  padding: 0 !important;
+  max-width: none !important;
+}
+
+/* ======================================
+   Landing hero (full-screen)
+   ====================================== */
+.cgdro-hero {
+  position: relative;
+  height: 100vh;                  /* full viewport */
+  width: 100% !important;         /* align with header; avoid 100vw scrollbars */
+  background:
+    linear-gradient(
+      120deg,
+      rgba(128,175,126,0.65),
+      rgba(180,210,105,0.65),
+      rgba(235,203,100,0.55)
+    ),
+    url('../assets/home_bg.png') center/cover no-repeat; /* path relative to this CSS */
+  display: flex;
+  align-items: flex-end;          /* push overlay downward */
+  justify-content: flex-start;    /* push overlay left */
+  padding: 8vh 8vw;               /* inset from edges */
+  box-sizing: border-box;
+  z-index: 1;                     /* avoid covering header */
+}
+
+/* Overlay card */
+.cgdro-hero__overlay {
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: 1.25rem;
+  padding: 2.25rem 2rem;
+  max-width: 840px;
+  text-align: left;
+  backdrop-filter: saturate(120%) blur(2px);
+  position: relative;
+  z-index: 2;
+}
+
+/* Title + Subtitle — force bold white / white */
+.md-typeset .cgdro-hero__title {
+  margin: 0 0 0.75rem 0;
+  color: #ffffff !important;      /* pure white */
+  font-size: clamp(1.9rem, 3.4vw, 3.2rem);
+  line-height: 1.15;
+  font-weight: 800 !important;    /* 加粗 */
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+.md-typeset .cgdro-hero__subtitle {
+  margin: 0 0 1.25rem 0;
+  color: #ffffff !important;      /* white */
+  opacity: 0.95;                  /* gentle hierarchy */
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+}
+
+.cgdro-hero__actions { margin-top: 0.5rem; }
+.cgdro-hero__actions .md-button { margin-right: 0.75rem; }
+
+/* Reduce top spacing for site content (global) */
+.md-main__inner { margin-top: 0; }
+
+/* ---- Buttons on hero ---- */
+.cgdro-hero__actions .md-button--primary {
+  background-color: var(--cgdro-lightgreen);
+  color: #fff;
+  border: none;
+}
+.cgdro-hero__actions .md-button--primary:hover {
+  background-color: var(--cgdro-yellowgreen);
+}
+.cgdro-hero__actions .md-button {
+  border-color: var(--cgdro-gold);
+  color: var(--cgdro-gold);
+}
+.cgdro-hero__actions .md-button:hover {
+  background-color: var(--cgdro-gold);
+  color: #111;
+}
+/* Keyboard focus visible */
+.cgdro-hero__actions .md-button:focus-visible {
+  outline: 3px solid var(--cgdro-gold);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px #0006;
+}
+
+/* Section heading accent on Home */
+#learn-more h2 { color: var(--cgdro-lightgreen); }
+/* Anchor target not hidden by sticky header */
+#learn-more { scroll-margin-top: 72px; }
+
+/* ======================================
+   Header & tabs — brand color fallback
+   ====================================== */
+.md-header, .md-tabs {
+  background-color: var(--cgdro-lightgreen) !important;
+}
+.md-header .md-logo,
+.md-header .md-header__title,
+.md-tabs__link { color: #fff !important; }
+
+/* Make the hamburger/catalog button white too */
+.md-header__button,
+.md-header__button .md-icon,
+.md-header__button > svg {
+  color: #ffffff !important;
+  fill: currentColor !important;
+}
+
+/* Bigger logo in the header */
+.md-header__button.md-logo img,
+.md-header__button.md-logo svg {
+  height: 36px;                  /* adjust 32–40px to taste */
+  width: auto;
+}
+.md-header { min-height: 56px; }
+
+/* ======================================
+   Footer
+   ====================================== */
+footer.md-footer {
+  background: linear-gradient(
+    90deg,
+    var(--cgdro-lightgreen) 0%,
+    var(--cgdro-yellowgreen) 50%,
+    var(--cgdro-gold) 100%
+  );
+  color: #fff;
+}
+
+/* ======================================
+   Extra repo icons (optional)
+   ====================================== */
+.cgdro-header-links {
+  position: absolute;
+  top: 0.5rem;
+  right: 4rem;
+  display: flex;
+  gap: 0.5rem;
+}
+.cgdro-header-link {
+  color: var(--md-default-fg-color, #fff);
+  opacity: 0.85;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.cgdro-header-link:hover { opacity: 1; transform: scale(1.1); }
+
+/* ======================================
+   Dark Mode (Material's "slate" scheme)
+   ====================================== */
+[data-md-color-scheme="slate"] {
+  --cgdro-lightgreen: #9CCF9C;
+  --cgdro-yellowgreen: #A9D982;
+  --cgdro-gold: #EBCB64;
+}
+[data-md-color-scheme="slate"] .cgdro-hero__overlay {
+  background: rgba(0, 0, 0, 0.55);
+}
+[data-md-color-scheme="slate"] .cgdro-hero {
+  background:
+    linear-gradient(
+      120deg,
+      rgba(100,150,100,0.5),
+      rgba(150,180,100,0.5),
+      rgba(235,203,100,0.35)
+    ),
+    url('../assets/home_bg.png') center/cover no-repeat;
+}
+/* keep title/subtitle white in dark mode */
+[data-md-color-scheme="slate"] .cgdro-hero__title   { color: #ffffff !important; font-weight: 800 !important; }
+[data-md-color-scheme="slate"] .cgdro-hero__subtitle{ color: #ffffff !important; opacity: 0.95; }
+[data-md-color-scheme="slate"] .cgdro-hero__actions .md-button--primary {
+  background-color: var(--cgdro-gold);
+  color: #222;
+}
+[data-md-color-scheme="slate"] .cgdro-hero__actions .md-button--primary:hover {
+  background-color: var(--cgdro-yellowgreen);
+  color: #000;
+}
+[data-md-color-scheme="slate"] .cgdro-hero__actions .md-button {
+  border-color: var(--cgdro-lightgreen);
+  color: var(--cgdro-lightgreen);
+}
+[data-md-color-scheme="slate"] .cgdro-hero__actions .md-button:hover {
+  background-color: var(--cgdro-lightgreen);
+  color: #111;
+}
+/* Dark footer */
+[data-md-color-scheme="slate"] footer.md-footer {
+  background: linear-gradient(
+    90deg,
+    var(--cgdro-lightgreen) 0%,
+    var(--cgdro-yellowgreen) 50%,
+    var(--cgdro-gold) 100%
+  );
+  color: #111;
+}
+
+/* ======================================
+   Responsive tweaks
+   ====================================== */
+@media (max-width: 860px) {
+  .cgdro-hero { padding: 10vh 6vw; }
+  .cgdro-hero__overlay { padding: 1.75rem 1.5rem; }
+}
+@media (max-width: 520px) {
+  .cgdro-hero { padding: 12vh 4vw; }
+  .cgdro-hero__overlay { border-radius: 1rem; }
+}
+
+/* Ensure header & buttons always clickable above full-bleed layers */
+.md-header { position: relative; z-index: 5; }
+.cgdro-hero, .cgdro-hero * { pointer-events: auto; }
+
+/* Optional smooth scroll */
+html { scroll-behavior: smooth; }

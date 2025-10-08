@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block header %}
+  {{ super() }}
+  <div class="cgdro-header-links">
+    <!-- Python repo -->
+    <a href="https://github.com/jaon11/CGDRO-Py" target="_blank" rel="noopener"
+       title="CGDRO Python repo" class="cgdro-header-link">
+      <svg class="md-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <use href="#svg-github"></use>
+      </svg>
+    </a>
+    <!-- R repo -->
+    <a href="https://github.com/jaon11/CGDRO" target="_blank" rel="noopener"
+       title="CGDRO R repo" class="cgdro-header-link">
+      <svg class="md-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <use href="#svg-github"></use>
+      </svg>
+    </a>
+  </div>
+{% endblock %}

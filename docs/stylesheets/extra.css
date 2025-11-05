@@ -5,9 +5,9 @@
 
 /* ---- Brand color variables (light mode defaults) ---- */
 :root {
-  --cgdro-lightgreen: #80AF7E;   /* Light Green */
-  --cgdro-yellowgreen: #B4D269;  /* Yellow-Green */
-  --cgdro-gold: #EBCB64;         /* Golden Yellow */
+  --cgdro-lightgreen: #7FB8E6;   /* Light Blue */
+  --cgdro-yellowgreen: #5CAFE0;  /* Medium Blue */
+  --cgdro-gold: #3C8DC5;         /* Deep Blue */
 }
 
 /* ======================================
@@ -22,7 +22,6 @@
 
 /* ===== Fix homepage grid so content starts flush under header ===== */
 [data-md-page="index"] .md-main__inner {
-  /* kill the default 3-col grid (sidebar | content | toc) */
   grid-template-columns: 0 minmax(0, 1fr) 0 !important;
 }
 [data-md-page="index"] .md-content {
@@ -41,103 +40,121 @@
 }
 
 /* ======================================
-   Landing hero (full-screen)
+   Landing hero (half-screen)
    ====================================== */
 .cgdro-hero {
   position: relative;
-  height: 100vh;                  /* full viewport */
-  width: 100% !important;         /* align with header; avoid 100vw scrollbars */
-  background:
-    linear-gradient(
-      120deg,
-      rgba(128,175,126,0.65),
-      rgba(180,210,105,0.65),
-      rgba(235,203,100,0.55)
-    ),
-    url('../assets/home_bg.png') center/cover no-repeat; /* path relative to this CSS */
+  height: 50vh;
+  width: 100% !important;
+  background:none,
+    url('../assets/home_bg.png') center/cover no-repeat;
   display: flex;
-  align-items: flex-end;          /* push overlay downward */
-  justify-content: flex-start;    /* push overlay left */
-  padding: 8vh 8vw;               /* inset from edges */
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 8vh 8vw;
   box-sizing: border-box;
-  z-index: 1;                     /* avoid covering header */
+  z-index: 1;
 }
 
 /* Overlay card */
 .cgdro-hero__overlay {
-  background: rgba(0, 0, 0, 0.45);
+  background: none;
   border-radius: 1.25rem;
   padding: 2.25rem 2rem;
   max-width: 840px;
   text-align: left;
-  backdrop-filter: saturate(120%) blur(2px);
+  backdrop-filter: none;
   position: relative;
   z-index: 2;
 }
 
-/* Title + Subtitle — force bold white / white */
+/* Title + Subtitle */
 .md-typeset .cgdro-hero__title {
   margin: 0 0 0.75rem 0;
-  color: #ffffff !important;      /* pure white */
+  color: #ffffff !important;
   font-size: clamp(1.9rem, 3.4vw, 3.2rem);
   line-height: 1.15;
-  font-weight: 800 !important;    /* 加粗 */
+  font-weight: 800 !important;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 .md-typeset .cgdro-hero__subtitle {
   margin: 0 0 1.25rem 0;
-  color: #ffffff !important;      /* white */
-  opacity: 0.95;                  /* gentle hierarchy */
+  color: #ffffff !important;
+  opacity: 0.95;
   font-size: clamp(1rem, 1.4vw, 1.25rem);
 }
 
 .cgdro-hero__actions { margin-top: 0.5rem; }
 .cgdro-hero__actions .md-button { margin-right: 0.75rem; }
 
-/* Reduce top spacing for site content (global) */
 .md-main__inner { margin-top: 0; }
 
-/* ---- Buttons on hero ---- */
+/* ======================================
+   Hero Buttons (Primary + Secondary)
+   ====================================== */
+
+/* 🔹 主按钮（Get started）—— 浅亮蓝背景，深蓝边框与文字 */
 .cgdro-hero__actions .md-button--primary {
-  background-color: var(--cgdro-lightgreen);
-  color: #fff;
-  border: none;
+  background-color: #7FB8E6;        /* 浅亮蓝背景 */
+  color: #0B3954;                   /* 深蓝文字 */
+  border: 2px solid #0B3954;        /* 深蓝边框 */
+  font-weight: 600;
+  transition: all 0.25s ease;
 }
 .cgdro-hero__actions .md-button--primary:hover {
-  background-color: var(--cgdro-yellowgreen);
+  background-color: #3C8DC5;        /* hover 时变为中蓝 */
+  color: #ffffff;                   /* 白色文字 */
+  border-color: #0B3954;            /* 维持深蓝边框 */
 }
-.cgdro-hero__actions .md-button {
-  border-color: var(--cgdro-gold);
-  color: var(--cgdro-gold);
-}
-.cgdro-hero__actions .md-button:hover {
-  background-color: var(--cgdro-gold);
-  color: #111;
-}
-/* Keyboard focus visible */
-.cgdro-hero__actions .md-button:focus-visible {
-  outline: 3px solid var(--cgdro-gold);
+.cgdro-hero__actions .md-button--primary:focus-visible {
+  outline: 3px solid #3C8DC5;
   outline-offset: 2px;
   box-shadow: 0 0 0 2px #0006;
 }
 
-/* Section heading accent on Home */
-#learn-more h2 { color: var(--cgdro-lightgreen); }
-/* Anchor target not hidden by sticky header */
+/* 🔹 次按钮（Learn more）—— 透明背景，白边白字 */
+.cgdro-hero__actions .md-button {
+  background-color: transparent;     /* 完全透明背景 */
+  border: 2px solid #ffffff;         /* 白色边框 */
+  color: #ffffff;                    /* 白色文字 */
+  font-weight: 500;
+  transition: all 0.25s ease;
+}
+.cgdro-hero__actions .md-button:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* hover 时轻微白透明层 */
+  border-color: #7FB8E6;           /* hover 时边框变浅蓝 */
+  color: #7FB8E6;                  /* hover 时文字变浅蓝 */
+}
+.cgdro-hero__actions .md-button:focus-visible {
+  outline: 3px solid #7FB8E6;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px #0006;
+}
+
+/* 🔹 按钮容器间距（保持美观） */
+.cgdro-hero__actions {
+  margin-top: 0.5rem;
+}
+.cgdro-hero__actions .md-button {
+  margin-right: 0.75rem;
+}
+
+/* 🔹 小节标题色保持一致 */
+#learn-more h2 { color: #7FB8E6; }
 #learn-more { scroll-margin-top: 72px; }
 
+
 /* ======================================
-   Header & tabs — brand color fallback
+   Header & tabs
    ====================================== */
 .md-header, .md-tabs {
-  background-color: var(--cgdro-lightgreen) !important;
+  background-color: var(--cgdro-yellowgreen) !important;
 }
 .md-header .md-logo,
 .md-header .md-header__title,
 .md-tabs__link { color: #fff !important; }
 
-/* Make the hamburger/catalog button white too */
 .md-header__button,
 .md-header__button .md-icon,
 .md-header__button > svg {
@@ -145,10 +162,9 @@
   fill: currentColor !important;
 }
 
-/* Bigger logo in the header */
 .md-header__button.md-logo img,
 .md-header__button.md-logo svg {
-  height: 36px;                  /* adjust 32–40px to taste */
+  height: 150px;
   width: auto;
 }
 .md-header { min-height: 56px; }
@@ -167,7 +183,7 @@ footer.md-footer {
 }
 
 /* ======================================
-   Extra repo icons (optional)
+   Extra repo icons
    ====================================== */
 .cgdro-header-links {
   position: absolute;
@@ -184,12 +200,12 @@ footer.md-footer {
 .cgdro-header-link:hover { opacity: 1; transform: scale(1.1); }
 
 /* ======================================
-   Dark Mode (Material's "slate" scheme)
+   Dark Mode
    ====================================== */
 [data-md-color-scheme="slate"] {
-  --cgdro-lightgreen: #9CCF9C;
-  --cgdro-yellowgreen: #A9D982;
-  --cgdro-gold: #EBCB64;
+  --cgdro-lightgreen: #A5D8F3;
+  --cgdro-yellowgreen: #7FC3EB;
+  --cgdro-gold: #4B9BD5;
 }
 [data-md-color-scheme="slate"] .cgdro-hero__overlay {
   background: rgba(0, 0, 0, 0.55);
@@ -198,13 +214,12 @@ footer.md-footer {
   background:
     linear-gradient(
       120deg,
-      rgba(100,150,100,0.5),
-      rgba(150,180,100,0.5),
-      rgba(235,203,100,0.35)
+      rgba(165,216,243,0.5),
+      rgba(127,195,235,0.5),
+      rgba(75,155,213,0.35)
     ),
     url('../assets/home_bg.png') center/cover no-repeat;
 }
-/* keep title/subtitle white in dark mode */
 [data-md-color-scheme="slate"] .cgdro-hero__title   { color: #ffffff !important; font-weight: 800 !important; }
 [data-md-color-scheme="slate"] .cgdro-hero__subtitle{ color: #ffffff !important; opacity: 0.95; }
 [data-md-color-scheme="slate"] .cgdro-hero__actions .md-button--primary {
@@ -223,7 +238,6 @@ footer.md-footer {
   background-color: var(--cgdro-lightgreen);
   color: #111;
 }
-/* Dark footer */
 [data-md-color-scheme="slate"] footer.md-footer {
   background: linear-gradient(
     90deg,
@@ -238,17 +252,69 @@ footer.md-footer {
    Responsive tweaks
    ====================================== */
 @media (max-width: 860px) {
-  .cgdro-hero { padding: 10vh 6vw; }
+  .cgdro-hero { padding: 10vh 6vw; height: 48vh; }
   .cgdro-hero__overlay { padding: 1.75rem 1.5rem; }
 }
 @media (max-width: 520px) {
-  .cgdro-hero { padding: 12vh 4vw; }
+  .cgdro-hero { padding: 12vh 4vw; height: 46vh; }
   .cgdro-hero__overlay { border-radius: 1rem; }
 }
 
-/* Ensure header & buttons always clickable above full-bleed layers */
 .md-header { position: relative; z-index: 5; }
 .cgdro-hero, .cgdro-hero * { pointer-events: auto; }
 
-/* Optional smooth scroll */
 html { scroll-behavior: smooth; }
+
+/* Float image on the right, exactly half the content width */
+.md-typeset .float-right {
+  float: right;
+  width: 50%;
+  max-width: none;          /* override theme's max-width on images */
+  height: auto;
+  display: block;
+  margin: 0 0 0.75rem 1rem; /* top right bottom left */
+}
+
+/* Small screens: stack full width */
+@media (max-width: 900px) {
+  .md-typeset .float-right {
+    float: none;
+    width: 50%;
+    margin: 0.5rem 0;
+  }
+}
+
+/* Optional: clear floats after sections so following content doesn't wrap */
+.md-typeset .clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+/* Two-column section: left text (50%), right image (50%) */
+.md-typeset .two-col {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+.md-typeset .two-col .col {
+  flex: 1 1 50%;
+  min-width: 0;            /* prevent overflow in flex items */
+}
+.md-typeset .two-col img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;      /* optional: soften the image */
+}
+
+/* Mobile: stack full width */
+@media (max-width: 900px) {
+  .md-typeset .two-col {
+    display: block;
+  }
+  .md-typeset .two-col .col {
+    width: 100%;
+  }
+}

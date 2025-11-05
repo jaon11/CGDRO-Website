@@ -48,7 +48,10 @@ plugins:
   - mkdocs-jupyter:
       execute: false
 
+# cgdro.yml（与 theme: 同级的位置）
+
 markdown_extensions:
+  - md_in_html
   - admonition
   - footnotes
   - toc:
@@ -58,10 +61,12 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.details
   - pymdownx.tabbed
-  - attr_list   
+  - attr_list
+
 
 extra_javascript:
-  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  - /javascripts/mathjax.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js
 
 extra_css:
   - stylesheets/extra.css       
@@ -79,12 +84,12 @@ extra:
 
 nav:
   - Home: index.md
-  - Introduction:
-      - Overview: setup/intro.md
-      - Linear Regression (lowdim): setup/reg_ld.md
-      - Linear Regression (highdim): setup/reg_hd.md
-      - Regression (machine learning): setup/reg_ml.md
-      - Classification: setup/cls.md
+  - Introduction: setup/intro.md
+  - Methods:
+      - Linear Regression (lowdim): method/reg_ld.md
+      - Linear Regression (highdim): method/reg_hd.md
+      - Regression (machine learning): method/reg_ml.md
+      - Classification: method/cls.md
   - Python Package:
       - Getting Started: python/index.md
       - API Reference: python/ref.md

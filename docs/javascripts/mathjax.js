@@ -11,3 +11,4 @@ window.MathJax = {
     skipHtmlTags: ["script", "noscript", "style", "textarea", "pre", "code"]
   }
 };
+

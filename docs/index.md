@@ -15,7 +15,7 @@ hide:
 <!-- HERO SECTION -->
 <div class="cgdro-hero">
   <div class="cgdro-hero__overlay">
-    <h1 class="cgdro-hero__title">CGDRO, your go-to solution for multi-source learning.</h1>
+    <h1 class="cgdro-hero__title">CGDRO, multi-source learning with no target labeled data.</h1>
     <p class="cgdro-hero__subtitle">
       Integrate diverse data sources, provide robust prediction and statistical inference on your target domain.
     </p>
@@ -30,49 +30,34 @@ hide:
 <div id="learn-more"></div>
 
 
+In many real-world applications, we often need to make predictions in a new environment where no labeled data are available. For instance, consider training models on patient records from several hospitals, and then deploying them in a new hospital whose patient population may differ. Each source hospital offers valuable information, but their data distributions may vary from the target one, making direct model transfer unreliable.
+This setting, known as multi-source unsupervised domain adaptation (MSDA), presents a fundamental challenge:
+
+<div align="center" style="font-size: 1.35em; font-style: italic;">
+How can we learn a model that performs reliably on the unlabeled target domain,<br>
+by leveraging the labeled source domains?
+</div>
 
 
-## Why CGDRO?
-<!-- detail left blank for now -->
-![CGDRO flowchart](assets/CGDRO.png){.float-right}
+Figure <a href="#fig-msda">1</a>  provides a visual illustration of this setup.
+<figure id="fig-msda" class="wide-caption" markdown="block">
+  <img src="../assets/MSDA.png"
+       alt="Illustration of Multi-source Unsupervised Domain Adaptation.">
+  <figcaption markdown="span">
+    Figure 1. Illustration of Multi-source Unsupervised Domain Adaptation.
+    Each source domain provides labeled data, while the target domain contains only unlabeled data. ([Guo et al. (2025)](/setup/intro/#ref-guo2025statistical))
+  </figcaption>
+</figure>
 
-CGDRO provides conprehensive multi-source prediction and model statistical inference without knowing target labels, offering multi-source solutions to low-dimensional and high-dimensional, linear and complex data, regression and classification problems. CGDRO is easy to incorporate various machine learning and deep learning methods into the data integration process, which can be widely applied in biomedical, financial, environmetal scientifical problems.
 
-&nbsp;
+The CGDRO package is designed to tackle exactly this problem. CGDRO stands for Conditional Group Distributionally Robust Optimization, a principled framework for constructing prediction models that are robust across domains. It not only learns models that generalize to unseen target distributions, but also includes built-in statistical inference tools, enabling users to quantify uncertainty and perform hypothesis testing on model parameters.
 
-## What is CGDRO?
-<!-- detail left blank for now -->
-CGDRO, Conditional Group Distributionally Robust Optimization, is designed for multi-source domain adaptation probelm with no labels on the target domain. Different from ERM (Empirical Risk Minimization), CGDRO offers robust estimation, prediction, and statistical inference by optimizing **worst-case** risk within an uncertainty set.
 
-We have the CGDRO estimator is:
 
-$$
-f_{\theta^*} = \arg\min_\theta \max_{\mathbf{T} \in \mathcal{C}}
-\mathbb{E}_{(X, Y)\sim \mathbf{T}} \ell(X, Y; f_\theta).
-$$
 
-Where $\mathcal{C}$ is the uncertainty set. Then, by resampling-based methods, we can construct valid confidence interval of the estimators on the target domain.
-
-&nbsp;
-
-## Citations
-> 🧾 This section will include formal citations to our paper and related works later.
->
-> ```
-> (Citations placeholder)
-> ```
 
 ---
 
 <p style="text-align:center; font-size: 0.9rem; margin-top: 2rem;">
-  © 2025 CGDRO • Authors: <a href="about/authors/">Team</a> •
-  Visits: <span id="cgdro-counter">—</span>
+  © 2025 CGDRO • Authors: <a href="about/authors/">Team</a>
 </p>
-
-<script>
-  // Local visit counter (placeholder)
-  const key = 'cgdro-visit-count';
-  const n = parseInt(localStorage.getItem(key) || '0', 10) + 1;
-  localStorage.setItem(key, String(n));
-  document.getElementById('cgdro-counter').textContent = n.toLocaleString();
-</script>

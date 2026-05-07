@@ -8,12 +8,18 @@ and complex data, regression and classification problems.
 
 CGDRO spports 4 familys of models:
 
+<p align="center"><font size="2"></font></p>
+
+<div class="center" markdown>
+
 | Family | Description | Statistical Inference |
 |-----------------------------|---------------------------------|----------------|
 | `reg_ld` | Linear prediction model (low-dimensional) | ✅ |
 | `reg_hd` | High-dimensional linear model | ✅ |
 | `reg_ml` | Machine learning prediction model | ❌ |
 | `cls` | Linear model for classification task | ✅ |
+
+</div>
 
 # Installation
 
@@ -47,7 +53,8 @@ data
 ```
 
 Fitting CGDRO model for low-dimensional linear regression with reward
-loss and summarize results
+loss and summarize results, more loss types can be selected from `squredloss` and `regret`, showing in tutorial of [family='reg_ld'](reg_ld.ipynb).
+
 
 ``` r
   ## fit cgdro
@@ -82,7 +89,18 @@ loss and summarize results
     ## index     |              6
     ## CI        | (0.0247,0.2149)
 
-Make prediction on target data
+We can get statistical inference results from CGDRO, including：
+
+- **CGDRO Aggregated Weights** (learned weights from each group of source domain)；
+
+- **Coefficient Estimators** (the worst-case estimators of coefficient on target domain)；
+
+- **Confidence Intervals** (valid confidence intervals of target domain coefficient estimators). 
+
+In the summarized results above, `group` refers to each group of source domains, `index` refers to the index of coeffients, starting from the intercept if `intercept=TRUE`, else starting from the first dimension of coefficient.
+
+Make prediction on target data (you do not have to state the coveriate you use for prediction since target data is the default choice) and show the first 6 predicted values.
+
 
 ``` r
   ## predict

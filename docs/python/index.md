@@ -4,12 +4,18 @@ CGDRO is a python library providing comprehensive multi-source prediction and mo
 
 CGDRO supports 4 modules:
 
+<p align="center"><font size="2"></font></p>
+
+<div class="center" markdown>
+
 | Python Module | Description | Statistical Inference |
 |-----------------------------|---------------------------------|----------------|
 | `Regression.linear.ld` | Linear prediction model (low-dimensional) | ✅ |
 | `Regression.linear.hd` | High-dimensional linear model | ✅ |
 | `Regression.ml` | Machine learning prediction model | ❌ |
 | `Classification` | Linear model for classification task | ✅ |
+
+</div>
 
 # Installation
 
@@ -49,7 +55,7 @@ X0 = data.X_target
 ```
 
 Fitting CGDRO model for low-dimensional linear regression with reward
-loss and summarize results
+loss and summarize results, more loss types can be selected from `squredloss` and `regret`, showing in tutorial of [Regression.linear.ld](reg_ld.ipynb).
 
 ``` python
 ## First announcing the module
@@ -82,7 +88,17 @@ reg.summary()
     ##index     |              1              2              3              4              5
     ##CI        | (-0.1283,-0.0027) (-0.1080,0.0214) (-0.0601,0.0665) (-0.0666,0.0629) (0.0351,0.1643)
 
-Make prediction on target data
+We can get statistical inference results from CGDRO, including：
+
+- **CGDRO Aggregated Weights** (learned weights from each group of source domain)；
+
+- **Coefficient Estimators** (the worst-case estimators of coefficient on target domain)；
+
+- **Confidence Intervals** (valid confidence intervals of target domain coefficient estimators). 
+
+In the summarized results above, `group` refers to each group of source domains, `index` refers to the index of coeffients, starting from the intercept if `intercept=True`, else starting from the first dimension of coefficient.
+
+Make prediction on target data (you do not have to state the coveriate you use for prediction since target data is the default choice) and show the first 10 predicted values.
 
 ``` python
 ## predict

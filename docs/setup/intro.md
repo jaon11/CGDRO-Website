@@ -1,116 +1,152 @@
 # Introduction
 
-In many real-world applications, we often face the challenge of making predictions in a **target domain** where we do not have labeled data. Meanwhile, we may have access to labeled data from several **source domains**, each exhibiting related but potentially different distributions with the target domain of interest. This setting is known as **Multi-Source Unsupervised Domain Adaptation (MSDA)**, as illustrated below.
+CGDRO solves the following robust optimization problem:
 
-![Illustration of Multi-source Unsupervised Domain Adaptation](../assets/MSDA.png)
+$$
+f_{\theta^*}
+= \arg\min_{\theta} \ \max_{\mathbf{T} \in \mathcal{C}}
+\ \mathbb{E}_{(X, Y)\sim \mathbf{T}} \ \ell(X, Y; f_\theta),
+$$
 
-*Figure: Illustration of Multi-source Unsupervised Domain Adaptation. The source domains have labeled data, while the target domain only has unlabeled data.*
-
-The **CGDRO** package is designed for this purpose. It provides tools to build robust prediction models that aim to perform well on the target domain, without access to its labels. Moreover, CGDRO includes built-in tools for **statistical inference**, enabling users to quantify uncertainty and perform hypothesis testing on model parameters.
-
-This package implements methods developed in the following research works:
-
-- **Regression task:** [Guo et al., 2024](#ref-guo2024statistical); [Wang et al., 2023](#ref-wang2023distributionally)  
-- **Classification task:** [Guo et al., 2025](#ref-guo2025statistical)
-
-
-**Highlights:**  
-- Solves a **minimax optimization problem** for robust transfer learning.
+where $\mathcal{C}$ represents a family of plausible target distributions.  
+The solution $f_{\theta^*}(\cdot)$ guards against distributional shifts by minimizing the worst-case prediction risk over $\mathcal{C}$.
 
 ---
 
-## Formal Setup of MSDA
+## **Highlights**
 
-In the $l$-th **source domain**, where $1 \le l \le L$, we observe labeled samples $\{X_i^{(l)}, Y_i^{(l)}\}_{i=1}^{n_l}$ drawn from a joint distribution  
-$\mathbf{P}^{(l)} = (\mathbf{P}_X^{(l)}, \mathbf{P}_{Y|X}^{(l)})$.
-
-Here, $X_i^{(l)} \in \mathbb{R}^d$ are covariates, and $Y_i^{(l)} \in \mathbb{R}$ are corresponding labels.  
-In the **target domain**, we observe only covariates $\{X_j^{\mathbf{Q}}\}_{j=1}^N$ drawn from $\mathbf{Q}_X$, while the labels are **unobserved**.
-
-We typically have  
-$$N \gg \max_{1 \le l \le L} n_l,$$  
-which reflects real-world scenarios where unlabeled data are abundant but labeling is costly.
-
-Two major types of distributional shift may occur simultaneously:
-
-- **Covariate shift:** $\mathbf{Q}_X \ne \mathbf{P}_X^{(l)}$
-- **Posterior drift:** $\mathbf{Q}_{Y|X} \ne \mathbf{P}_{Y|X}^{(l)}$
+1. Efficiently and provably solve the minimax problem for the robust model $f_{\theta^*}$.
+2. Quantify the uncertainty of the learned model with rigorous statistical guarantees.
 
 ---
 
-## Formulation of the CGDRO Model
+## **Structure of the Package**
 
-To extract transferable knowledge shared across sources and adapt it to the target domain, we propose the **Conditional Group Distributionally Robust Optimization (CGDRO)** model.
+The package supports two main prediction tasks:
 
-While $\mathbf{Q}_X$ is identifiable from observed target covariates, $\mathbf{Q}_{Y|X}$ is not identifiable without labeled data.  
-We thus define an *uncertainty class* including all possible mixtures of the source conditional distributions:
+- **Regression** (continuous outcome)
+- **Classification** (discrete outcome)
 
-$$
-\mathcal{C} = \left\{ (\mathbf{Q}_X, \mathbf{T}_{Y|X}) :
-\mathbf{T}_{Y|X} = \sum_{l=1}^L q_l \mathbf{P}_{Y|X}^{(l)}, \;
-q \in \Delta^L \right\},
-$$
+### **Regression Models**
 
-where $\Delta^L = \{ q \in \mathbb{R}^L_+ : \sum_{l=1}^L q_l = 1 \}$ is the probability simplex.
+- **Low-dimensional linear:**  
+  $f_{\theta^*}(x) = (\theta^*)^\top x$ with moderate feature dimension
 
-We define the **worst-case risk** of model $f_\theta(\cdot)$ as:
+- **High-dimensional linear:**  
+  $f_{\theta^*}(x) = (\theta^*)^\top x$ with built-in regularization and variable selection
 
-$$
-\max_{\mathbf{T} \in \mathcal{C}} \mathbb{E}_{(X, Y)\sim \mathbf{T}}
-\left[\ell(X, Y; f_\theta)\right].
-$$
+- **Flexible ML model:**  
+  A user-specified model $f_{\theta^*}(x)$ using ML tools  
+  (random forests, boosting, neural networks)
 
-Then the CGDRO estimator is:
+### **Classification Models**
 
-$$
-f_{\theta^*} = \arg\min_\theta \max_{\mathbf{T} \in \mathcal{C}}
-\mathbb{E}_{(X, Y)\sim \mathbf{T}} \ell(X, Y; f_\theta).
-$$
-
-Using the mixture structure, this is equivalently:
-
-$$
-f_{\theta^*} = \arg\min_\theta \max_{q \in \Delta^L}
-\sum_{l=1}^L q_l \,
-\mathbb{E}_{X \sim \mathbf{Q}_X}
-\mathbb{E}_{Y \sim \mathbf{P}_{Y|X}^{(l)}}
-\ell(X, Y; f_\theta).
-$$
+- A generalized linear model for classification.
 
 ---
 
-## Structure of the Package
+## **Python Modules in CGDRO**
 
-The **CGDRO** package supports two main prediction tasks:
+<p align="center"><font size="2"></font></p>
 
-1. **Regression:** where $Y$ is continuous  
-2. **Classification:** where $Y$ is categorical
+<div class="center" markdown>
 
-### Regression
+| Python Module           | Description                           | Statistical Inference |
+|:-----------------------:|:-------------------------------------:|:---------------------:|
+| `Regression.linear.ld`  | linear prediction model (lowd)        | ✓                     |
+| `Regression.linear.hd`  | high-dimensional linear model (highd) | ✓                     |
+| `Regression.ml`         | machine learning prediction model     | ✗                     |
+| `Classification`        | linear model for classification       | ✓                     |
 
-Three types of regression models are provided:
+</div>
 
-- **Low-dimensional linear model:** $f_{\theta^*}(x) = \theta^{*\top}x$  
-- **High-dimensional linear model:** same form but includes regularization and variable selection  
-- **Machine learning model:** flexible user-specified learners (e.g., random forests, boosting, neural networks)
-
-### Classification
-
-The current version supports a **linear classifier**  
-$f_{\theta^*}(x) = \theta^{*\top}x$.
 
 ---
 
-### Python Module Summary
+## **References**
 
-| Python Module | Description | Statistical Inference |
-|-----------------------------|---------------------------------|----------------|
-| `Regression.linear.ld` | Linear prediction model (low-dimensional) | ✅ |
-| `Regression.linear.hd` | High-dimensional linear model | ✅ |
-| `Regression.ml` | Machine learning prediction model | ❌ |
-| `Classification.linear` | Linear model for classification task | ✅ |
+Depending on the prediction task, CGDRO implements methods from:
+
+- **Regression:** [Guo et al. (2024)](#ref-guo2024statistical); [Wang et al. (2023)](#ref-wang2023distributionally)  
+- **Classification:** [Guo et al. (2025)](#ref-guo2025statistical)
+
+
+
+We now introduce the CGDRO framework.  
+More details can be found in **[CGDRO-Regression](../method/cgdro-reg.md)** and **[CGDRO-Classification](../method/cgdro-cls.md)**.
+
 
 ---
+
+## **CGDRO: Leveraging Multiple Labeled Sources**
+
+Suppose we have $L$ labeled source domains.  
+In the $l$-th source domain ($1 \le l \le L$),
+
+$$
+(X^{(l)}, Y^{(l)})
+\sim
+\mathbf{P}^{(l)} := (\mathbf{P}^{(l)}_X, \mathbf{P}^{(l)}_{Y|X}).
+$$
+
+For the target domain, we write:
+
+$$
+(X^\mathrm{Q}, \textcolor{blue}{Y^\mathrm{Q}})
+\sim
+\mathrm{Q} := (\mathrm{Q}_X, \textcolor{blue}{\mathrm{Q}_{Y|X}}),
+$$
+
+where only $X^\mathrm{Q}$ is observed, but the target labels $\textcolor{blue}{Y^\mathrm{Q}}$ are entirely missing.
+
+While $\mathrm{Q}_X$ is identifiable from observed target covariates, the conditional distribution $\textcolor{blue}{\mathrm{Q}_{Y|X}}$ is not, since no target labels are observed.
+Rather than making assumptions about the form of $\textcolor{blue}{Y^\mathrm{Q}}$, CGDRO defines an uncertainty class that includes possible mixtures of the source conditional distributions:
+
+$$
+\mathcal{C} := \left\{ (\mathrm{Q}_X, \mathbf{T}_{Y|X}) : \mathbf{T}_{Y|X} = \sum_{l=1}^L q_l \cdot \mathbf{P}^{(l)}_{Y|X}, \; \text{with}\; q \in \Delta^L \right\},
+$$
+
+where $\Delta^L$ denotes the $(L-1)$-dimensional simplex, i.e., $\gamma_l \ge 0$ and $\sum_{l=1}^L \gamma_l = 1$.
+This class $\mathcal{C}$ contains the true target distribution $(\mathrm{Q}_X, \textcolor{blue}{\mathrm{Q}_{Y|X}})$ if $\textcolor{blue}{\mathrm{Q}_{Y|X}}$ admits a mixture representation of the source conditional distributions.
+
+In practice, one may have certain priors about the source mixture for the target domain. For instance, domain experts may believe that the target's conditional distribution $\textcolor{blue}{\mathrm{Q}_{Y|X}}$ resembles a mixture of the sources $\{\mathbf{P}^{(l)}_{Y|X}\}_{l}$.
+
+To encode this, restrict the mixture weights to a local neighborhood:
+
+$$
+\mathcal{H}
+= \{ q \in \Delta^L : \|q - q_{\rm prior}\|_2 \le \rho \},
+$$
+
+where $\rho$ controls the trust region size.
+
+The prior-informed uncertainty class becomes:
+
+$$
+\mathcal{C}_{\mathcal{H}}
+=
+\left\{
+(\mathrm{Q}_X, \mathbf{T}_{Y|X}):
+\mathbf{T}_{Y|X}
+= \sum_{l=1}^L q_l \mathbf{P}^{(l)}_{Y|X},
+\ q \in \mathcal{H}
+\right\}.
+$$
+
+The corresponding model is:
+
+$$
+f_{\theta_{\mathcal{H}}^*}
+=
+\arg\min_{\theta}
+\ \max_{\mathbf{T}\in \mathcal{C}_{\mathcal{H}}}
+\ \mathbb{E}_{(X, Y)\sim \mathbf{T}}
+\ \ell(X, Y; f_\theta).
+$$
+
+Incorporating prior information often leads to **less conservative** solutions and **better predictive performance** when the prior is accurate.
+
+
 
 
 ## References

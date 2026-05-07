@@ -20,7 +20,7 @@
 [data-md-page="index"] .md-sidebar--primary,
 [data-md-page="index"] .md-sidebar--secondary { display: none; }
 
-/* ===== Fix homepage grid so content starts flush under header ===== */
+/* Fix homepage grid so content starts flush under header */
 [data-md-page="index"] .md-main__inner {
   grid-template-columns: 0 minmax(0, 1fr) 0 !important;
 }
@@ -78,6 +78,10 @@
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
+.cgdro-hero__title .enumerate-headings-plugin,
+.cgdro-hero__title .enumerate-headings-plugins {
+  display: none;
+}
 .md-typeset .cgdro-hero__subtitle {
   margin: 0 0 1.25rem 0;
   color: #ffffff !important;
@@ -94,18 +98,18 @@
    Hero Buttons (Primary + Secondary)
    ====================================== */
 
-/* 🔹 主按钮（Get started）—— 浅亮蓝背景，深蓝边框与文字 */
+/* 主按钮（Get started） */
 .cgdro-hero__actions .md-button--primary {
-  background-color: #7FB8E6;        /* 浅亮蓝背景 */
-  color: #0B3954;                   /* 深蓝文字 */
-  border: 2px solid #0B3954;        /* 深蓝边框 */
+  background-color: #7FB8E6;
+  color: #0B3954;
+  border: 2px solid #0B3954;
   font-weight: 600;
   transition: all 0.25s ease;
 }
 .cgdro-hero__actions .md-button--primary:hover {
-  background-color: #3C8DC5;        /* hover 时变为中蓝 */
-  color: #ffffff;                   /* 白色文字 */
-  border-color: #0B3954;            /* 维持深蓝边框 */
+  background-color: #3C8DC5;
+  color: #ffffff;
+  border-color: #0B3954;
 }
 .cgdro-hero__actions .md-button--primary:focus-visible {
   outline: 3px solid #3C8DC5;
@@ -113,18 +117,18 @@
   box-shadow: 0 0 0 2px #0006;
 }
 
-/* 🔹 次按钮（Learn more）—— 透明背景，白边白字 */
+/* 次按钮（Learn more） */
 .cgdro-hero__actions .md-button {
-  background-color: transparent;     /* 完全透明背景 */
-  border: 2px solid #ffffff;         /* 白色边框 */
-  color: #ffffff;                    /* 白色文字 */
+  background-color: transparent;
+  border: 2px solid #ffffff;
+  color: #ffffff;
   font-weight: 500;
   transition: all 0.25s ease;
 }
 .cgdro-hero__actions .md-button:hover {
-  background-color: rgba(255, 255, 255, 0.1); /* hover 时轻微白透明层 */
-  border-color: #7FB8E6;           /* hover 时边框变浅蓝 */
-  color: #7FB8E6;                  /* hover 时文字变浅蓝 */
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: #7FB8E6;
+  color: #7FB8E6;
 }
 .cgdro-hero__actions .md-button:focus-visible {
   outline: 3px solid #7FB8E6;
@@ -132,7 +136,7 @@
   box-shadow: 0 0 0 2px #0006;
 }
 
-/* 🔹 按钮容器间距（保持美观） */
+/* 按钮容器间距 */
 .cgdro-hero__actions {
   margin-top: 0.5rem;
 }
@@ -140,34 +144,38 @@
   margin-right: 0.75rem;
 }
 
-/* 🔹 小节标题色保持一致 */
+/* 小节标题色保持一致 */
 #learn-more h2 { color: #7FB8E6; }
 #learn-more { scroll-margin-top: 72px; }
 
-
 /* ======================================
-   Header & tabs
+   Header & tabs (logo → small text)
    ====================================== */
-.md-header, .md-tabs {
-  background-color: var(--cgdro-yellowgreen) !important;
-}
-.md-header .md-logo,
-.md-header .md-header__title,
-.md-tabs__link { color: #fff !important; }
 
-.md-header__button,
-.md-header__button .md-icon,
-.md-header__button > svg {
-  color: #ffffff !important;
-  fill: currentColor !important;
+/* 使用 Material 默认 header 颜色，不再强行覆盖 */
+/* 这里只做 logo 样式定制：隐藏图片/图标，用文字 CGDRO 替代 */
+.md-header__button.md-logo {
+  display: flex;
+  align-items: center;
+  padding-left: 0.35rem;
+  padding-right: 0.75rem;
 }
 
+/* 隐藏 logo 图片 / svg */
 .md-header__button.md-logo img,
 .md-header__button.md-logo svg {
-  height: 150px;
-  width: auto;
+  display: none;
 }
-.md-header { min-height: 56px; }
+
+/* 用一行小字 “CGDRO” 作为文字 logo */
+.md-header__button.md-logo::after {
+  content: "CGDRO";
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: inherit;          /* 跟随主题 header 文字颜色 */
+}
 
 /* ======================================
    Footer
@@ -197,7 +205,10 @@ footer.md-footer {
   opacity: 0.85;
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
-.cgdro-header-link:hover { opacity: 1; transform: scale(1.1); }
+.cgdro-header-link:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
 
 /* ======================================
    Dark Mode
@@ -220,8 +231,14 @@ footer.md-footer {
     ),
     url('../assets/home_bg.png') center/cover no-repeat;
 }
-[data-md-color-scheme="slate"] .cgdro-hero__title   { color: #ffffff !important; font-weight: 800 !important; }
-[data-md-color-scheme="slate"] .cgdro-hero__subtitle{ color: #ffffff !important; opacity: 0.95; }
+[data-md-color-scheme="slate"] .cgdro-hero__title   {
+  color: #ffffff !important;
+  font-weight: 800 !important;
+}
+[data-md-color-scheme="slate"] .cgdro-hero__subtitle{
+  color: #ffffff !important;
+  opacity: 0.95;
+}
 [data-md-color-scheme="slate"] .cgdro-hero__actions .md-button--primary {
   background-color: var(--cgdro-gold);
   color: #222;
@@ -265,14 +282,18 @@ footer.md-footer {
 
 html { scroll-behavior: smooth; }
 
+/* ======================================
+   Float image / layout helpers
+   ====================================== */
+
 /* Float image on the right, exactly half the content width */
 .md-typeset .float-right {
   float: right;
   width: 50%;
-  max-width: none;          /* override theme's max-width on images */
+  max-width: none;
   height: auto;
   display: block;
-  margin: 0 0 0.75rem 1rem; /* top right bottom left */
+  margin: 0 0 0.75rem 1rem;
 }
 
 /* Small screens: stack full width */
@@ -284,13 +305,12 @@ html { scroll-behavior: smooth; }
   }
 }
 
-/* Optional: clear floats after sections so following content doesn't wrap */
+/* Clear floats after sections */
 .md-typeset .clearfix::after {
   content: "";
   display: table;
   clear: both;
 }
-
 
 /* Two-column section: left text (50%), right image (50%) */
 .md-typeset .two-col {
@@ -300,13 +320,13 @@ html { scroll-behavior: smooth; }
 }
 .md-typeset .two-col .col {
   flex: 1 1 50%;
-  min-width: 0;            /* prevent overflow in flex items */
+  min-width: 0;
 }
 .md-typeset .two-col img {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 8px;      /* optional: soften the image */
+  border-radius: 8px;
 }
 
 /* Mobile: stack full width */
@@ -317,4 +337,53 @@ html { scroll-behavior: smooth; }
   .md-typeset .two-col .col {
     width: 100%;
   }
+}
+
+/* ======================================
+   Site width (wider pages)
+   ====================================== */
+
+/* 加宽整体内容区域 */
+.md-grid {
+  max-width: 78rem; /* ≈1248px，可按需要调整 */
+}
+
+
+
+.center 
+{
+  width: auto;
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* 让带 wide-caption 的 figure 占满内容区宽度 */
+.md-typeset figure.wide-caption {
+  display: block !important;      /* 覆盖 display: table */
+  width: 100% !important;
+  max-width: 100% !important;     /* 关键：干掉主题的 max-width 限制 */
+  margin: 1.5rem 0 !important;
+  text-align: center;
+}
+
+/* 图片 70% 宽、居中 */
+.md-typeset figure.wide-caption img {
+  max-width: 70%;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* caption 占满整行，而不是和图片同宽 */
+.md-typeset figure.wide-caption > figcaption {
+  display: block;
+  width: 100%;
+  max-width: 100% !important;     /* 关键：覆盖 figcaption 的 max-width */
+  margin-top: 0.5rem;
+  font-style: italic;
+  text-align: center;
 }

@@ -1,0 +1,1088 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Comprehensive documentation for CGDRO Python and R packages." name="description"/>
+<link href="../../setup/intro/" rel="prev"/>
+<link href="../cgdro-cls/" rel="next"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.6.21" name="generator"/>
+<title>CGDRO-Regression - CGDRO Documentation</title>
+<link href="../../assets/stylesheets/main.2a3383ac.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../assets/_mkdocstrings.css" rel="stylesheet"/>
+<link href="../../stylesheets/extra.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="#B4D269" data-md-color-primary="#80AF7E" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#cgdro-regression">1. 
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="CGDRO Documentation" class="md-header__button md-logo" data-md-component="logo" href="../.." title="CGDRO Documentation">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            CGDRO Documentation
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              CGDRO-Regression
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="#B4D269" data-md-color-media="" data-md-color-primary="#80AF7E" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="#EBCB64" data-md-color-media="" data-md-color-primary="#9CCF9C" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+<div class="md-search__suggest" data-md-component="search-suggest"></div>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../..">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../setup/intro/">
+        
+  
+  
+    
+  
+  Introduction
+
+      </a>
+</li>
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="./">
+          
+  
+  
+  Methods
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../python/">
+          
+  
+  
+  Python Package
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../R/">
+          
+  
+  
+  R Package
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../about/authors/">
+          
+  
+  
+  About
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="https://github.com/jaon11/CGDRO-Py">
+        
+  
+  
+    
+  
+  Python repo ↗
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="https://github.com/jaon11/CGDRO">
+        
+  
+  
+    
+  
+  R repo ↗
+
+      </a>
+</li>
+</ul>
+</div>
+</nav>
+</header>
+<div class="cgdro-header-links">
+<!-- Python repo -->
+<a class="cgdro-header-link" href="https://github.com/jaon11/CGDRO-Py" rel="noopener" target="_blank" title="CGDRO Python repo">
+<svg aria-hidden="true" class="md-icon" viewbox="0 0 24 24">
+<use href="#svg-github"></use>
+</svg>
+</a>
+<!-- R repo -->
+<a class="cgdro-header-link" href="https://github.com/jaon11/CGDRO" rel="noopener" target="_blank" title="CGDRO R repo">
+<svg aria-hidden="true" class="md-icon" viewbox="0 0 24 24">
+<use href="#svg-github"></use>
+</svg>
+</a>
+</div>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="CGDRO Documentation" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="CGDRO Documentation">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    CGDRO Documentation
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+<span class="md-ellipsis">
+    Home
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../setup/intro/">
+<span class="md-ellipsis">
+    Introduction
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+<span class="md-ellipsis">
+    Methods
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            Methods
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    CGDRO-Regression
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    CGDRO-Regression
+    
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#computational-challenge">1.1 
+<span class="md-ellipsis">
+      Computational Challenge
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#identification-strategy">1.2 
+<span class="md-ellipsis">
+      Identification Strategy
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#interpretation-and-comparison">1.3 
+<span class="md-ellipsis">
+      Interpretation and Comparison
+    </span>
+</a>
+<nav aria-label="Interpretation and Comparison" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#geometric-interpretation">1.3.1 
+<span class="md-ellipsis">
+      Geometric Interpretation
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#comparison-of-losses">1.3.2 
+<span class="md-ellipsis">
+      Comparison of Losses
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#statistical-inference">1.4 
+<span class="md-ellipsis">
+      Statistical Inference
+    </span>
+</a>
+<nav aria-label="Statistical Inference" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#core-challenge">1.4.1 
+<span class="md-ellipsis">
+      Core Challenge
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#perturbation-based-procedure">1.4.2 
+<span class="md-ellipsis">
+      Perturbation-based Procedure
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#perturbation-steps">1.4.3 
+<span class="md-ellipsis">
+      Perturbation steps
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#references">1.5 
+<span class="md-ellipsis">
+      References
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../cgdro-cls/">
+<span class="md-ellipsis">
+    CGDRO-Classification
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-ellipsis">
+    Python Package
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            Python Package
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../python/">
+<span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../python/ref/">
+<span class="md-ellipsis">
+    API Reference
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Tutorials
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_3">
+<span class="md-nav__icon md-icon"></span>
+            Tutorials
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../python/reg_ld/">
+<span class="md-ellipsis">
+    Regression.linear.ld
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../python/reg_hd/">
+<span class="md-ellipsis">
+    Regression.linear.hd
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../python/reg_ml/">
+<span class="md-ellipsis">
+    Regression.ml
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../python/cls/">
+<span class="md-ellipsis">
+    Classification
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+<span class="md-ellipsis">
+    R Package
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+            R Package
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../R/">
+<span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../R/ref/">
+<span class="md-ellipsis">
+    API Reference
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Tutorials
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_3">
+<span class="md-nav__icon md-icon"></span>
+            Tutorials
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../R/reg_ld/">
+<span class="md-ellipsis">
+    Low-dimensional Linear Regression (family = 'reg_ld')
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../R/reg_hd/">
+<span class="md-ellipsis">
+    High-dimensional Linear Regression (family = 'reg_hd')
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../R/reg_ml/">
+<span class="md-ellipsis">
+    Machine Learning Regression (family = 'reg_ml')
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../R/cls/">
+<span class="md-ellipsis">
+    Classification (family = 'cls')
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+<span class="md-ellipsis">
+    About
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+            About
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../about/authors/">
+<span class="md-ellipsis">
+    Authors
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="https://github.com/jaon11/CGDRO-Py">
+<span class="md-ellipsis">
+    Python repo ↗
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="https://github.com/jaon11/CGDRO">
+<span class="md-ellipsis">
+    R repo ↗
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#computational-challenge">1.1 
+<span class="md-ellipsis">
+      Computational Challenge
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#identification-strategy">1.2 
+<span class="md-ellipsis">
+      Identification Strategy
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#interpretation-and-comparison">1.3 
+<span class="md-ellipsis">
+      Interpretation and Comparison
+    </span>
+</a>
+<nav aria-label="Interpretation and Comparison" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#geometric-interpretation">1.3.1 
+<span class="md-ellipsis">
+      Geometric Interpretation
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#comparison-of-losses">1.3.2 
+<span class="md-ellipsis">
+      Comparison of Losses
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#statistical-inference">1.4 
+<span class="md-ellipsis">
+      Statistical Inference
+    </span>
+</a>
+<nav aria-label="Statistical Inference" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#core-challenge">1.4.1 
+<span class="md-ellipsis">
+      Core Challenge
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#perturbation-based-procedure">1.4.2 
+<span class="md-ellipsis">
+      Perturbation-based Procedure
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#perturbation-steps">1.4.3 
+<span class="md-ellipsis">
+      Perturbation steps
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#references">1.5 
+<span class="md-ellipsis">
+      References
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="cgdro-regression"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.</span> CGDRO-Regression<a class="headerlink" href="#cgdro-regression" title="Permanent link">¶</a></h1>
+<p>With the uncertainty class</p>
+<div class="arithmatex">\[
+\mathcal{C}_{\mathcal{H}} := \left\{ \left(\mathrm{Q}_X, T_{Y\mid X}\right) : T_{Y\mid X} = \sum_{l=1}^L q_l \cdot \mathbf{P}^{(l)}_{Y\mid X},\; q \in \mathcal{H} \subseteq \Delta^L \right\},
+\]</div>
+<p>we aim to solve the following minimax optimization problem:</p>
+<div class="arithmatex">\[
+\arg\min_{f_\theta} \ \max_{T \in \mathcal{C}_\mathcal{H}} \ \mathbb{E}_{(X, Y)\sim T}\bigl[\ell(X, Y; f_\theta)\bigr],
+\]</div>
+<p>where <span class="arithmatex">\(f_\theta(x)\)</span> denotes a prediction model (which can be a linear model <span class="arithmatex">\(f_\theta(x)=\theta^\top x\)</span> or a more flexible form, such as a neural network). CGDRO provides three types of loss formulations described below.</p>
+<ul>
+<li><strong>Reward Function.</strong><br/>
+Given a pre-specified deterministic model <span class="arithmatex">\(h\)</span>, the term</li>
+</ul>
+<div class="arithmatex">\[
+\mathbb{E}_{T}\bigl[(Y-h(X))^2 - (Y-f_\theta(X))^2\bigr]
+\]</div>
+<p>quantifies the explained gain (or reward) of the model <span class="arithmatex">\(f_\theta\)</span> relative to <span class="arithmatex">\(h\)</span>. It measures how much better <span class="arithmatex">\(f_\theta\)</span> predicts the outcome compared to the baseline model <span class="arithmatex">\(h\)</span> under the distribution <span class="arithmatex">\(T\)</span>.</p>
+<p>The worst-case reward across all plausible distributions in <span class="arithmatex">\(\mathcal{C}_\mathcal{H}\)</span> is</p>
+<div class="arithmatex">\[
+\min_{T\in \mathcal{C}_\mathcal{H}} \mathbb{E}_T\bigl[(Y-h(X))^2 - (Y-f_\theta(X))^2\bigr].
+\]</div>
+<p>Maximizing this quantity corresponds to finding the model that achieves the greatest improvement in predictive power under the most adverse distributional shift.</p>
+<p>A particularly meaningful case arises when we take the null model <span class="arithmatex">\(h\equiv 0\)</span>. In this case, the reward term simplifies to</p>
+<div class="arithmatex">\[
+\mathbb{E}_{T}\bigl[Y^2 - (Y-f_\theta(X))^2\bigr],
+\]</div>
+<p>which represents the proportion of variance in <span class="arithmatex">\(Y\)</span> explained by <span class="arithmatex">\(f_\theta\)</span> under distribution <span class="arithmatex">\(T\)</span>, assuming <span class="arithmatex">\(Y\)</span> is centered. The corresponding robust model is thus defined as:</p>
+<div class="arithmatex">\[
+f_{\theta^*}
+:= \arg\max_{f_\theta}\min_{T\in \mathcal{C}_\mathcal{H}} \mathbb{E}_T\bigl[Y^2 - (Y-f_\theta(X))^2\bigr]
+= \arg\min_{f_\theta}\max_{T\in \mathcal{C}_\mathcal{H}} \mathbb{E}_T\bigl[(Y-f_\theta(X))^2-Y^2\bigr].
+\]</div>
+<ul>
+<li><strong>Squared Loss.</strong><br/>
+Another standard formulation minimizes the worst-case mean squared error (MSE):</li>
+</ul>
+<div class="arithmatex">\[
+f_{\theta^{\mathrm{sq}}} := \arg\min_{f_\theta}\max_{T\in \mathcal{C}_\mathcal{H}} \mathbb{E}_T\bigl[(Y-f_\theta(X))^2\bigr].
+\]</div>
+<p>This model directly focuses on reducing the largest possible prediction error under distributional uncertainty.</p>
+<ul>
+<li><strong>Regret.</strong><br/>
+The regret of a model <span class="arithmatex">\(f_\theta\)</span> under distribution <span class="arithmatex">\(T\)</span> is defined as:</li>
+</ul>
+<div class="arithmatex">\[
+\mathrm{Regret}_{T}(f_\theta)
+:= \mathbb{E}_{T}\bigl[(Y-f_\theta(X))^2\bigr]
+    - \inf_{\theta'}\mathbb{E}_{T}\bigl[(Y - f_{\theta'}(X))^2\bigr].
+\]</div>
+<p>This measures the excess risk of the model <span class="arithmatex">\(f_\theta\)</span> compared to the optimal model for the distribution <span class="arithmatex">\(T\)</span>. The regret-based CGDRO then minimizes the worst-case excess risk:</p>
+<div class="arithmatex">\[
+f_{\theta^{\mathrm{reg}}}
+= \arg\min_{f_\theta} \max_{T\in \mathcal{C}_\mathcal{H}} \mathrm{Regret}_{T}(f_\theta).
+\]</div>
+<p>For more details about CGDRO regression, you can look up <a href="#ref-wang2023distributionally">Wang et al. (2023)</a> about comparisons and identification of different loss functions in low-dimensional linear regression and flexible machine learning models. As for the debiased estimation in high-dimensional regression and statistical inference via perturbation for linear regression, you can go to <a href="#ref-guo2024statistical">Guo et al. (2024)</a>.</p>
+<h2 id="computational-challenge"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.1</span> Computational Challenge<a class="headerlink" href="#computational-challenge" title="Permanent link">¶</a></h2>
+<p>We now introduce the main computational challenge of solving the preceding minimax optimization problems. Let us take the reward-based formulation of <span class="arithmatex">\(f_{\theta^*}\)</span> as an example, and for simplicity, consider the case without prior information. The model <span class="arithmatex">\(f_{\theta^*}\)</span> can be equivalently expressed as:</p>
+<div class="arithmatex">\[
+\begin{aligned}
+    f_{\theta^*}
+    &amp;= \arg\min_{f_\theta}\max_{T\in \mathcal{C}} \mathbb{E}_T\bigl[(Y-f_\theta(X))^2-Y^2\bigr] \\
+    &amp;= \arg\min_{f_\theta}\max_{q\in \Delta^L} \sum_{l=1}^L q_l\cdot 
+    \mathbb{E}_{(X,Y)\sim (\mathrm{Q}_X, \mathbf{P}^{(l)}_{Y\mid X})}\bigl[(Y-f_\theta(X))^2-Y^2\bigr],
+\end{aligned}
+\]</div>
+<p>where the second equality follows directly from the definition of the uncertainty class:</p>
+<div class="arithmatex">\[
+\mathcal{C} := \left\{ \left(\mathrm{Q}_X, T_{Y\mid X}\right) : T_{Y\mid X} = \sum_{l=1}^L q_l \cdot \mathbf{P}^{(l)}_{Y\mid X}, \; q \in \Delta^L \right\}.
+\]</div>
+<p>In other words, the target conditional distribution is modeled as a convex mixture of the source conditionals.</p>
+<p>This equivalent formulation reveals a critical issue: to evaluate the inner expectation</p>
+<div class="arithmatex">\[
+\mathbb{E}_{(X,Y)\sim (\mathrm{Q}_X, \mathbf{P}^{(l)}_{Y\mid X})}\bigl[(Y-f_\theta(X))^2-Y^2\bigr],
+\]</div>
+<p>one needs access to paired data <span class="arithmatex">\((X,Y)\)</span> jointly distributed according to <span class="arithmatex">\((\mathrm{Q}_X, \mathbf{P}^{(l)}_{Y\mid X})\)</span>. However, such samples are not observable, as we only have:</p>
+<ul>
+<li>labeled samples from source distributions <span class="arithmatex">\(\mathbf{P}^{(l)}=(\mathbf{P}^{(l)}_X, \mathbf{P}^{(l)}_{Y\mid X})\)</span>, and</li>
+<li>unlabeled samples from the target covariate distribution <span class="arithmatex">\(\mathrm{Q}_X\)</span>.</li>
+</ul>
+<p>As a result, directly computing or optimizing this objective is impossible.</p>
+<h2 id="identification-strategy"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2</span> Identification Strategy<a class="headerlink" href="#identification-strategy" title="Permanent link">¶</a></h2>
+<p>To overcome this obstacle, CGDRO introduces a new identification strategy that expresses the unobservable expectations in terms of observable source data and target covariates.<br/>
+This reparameterization transforms the original minimax formulation into an equivalent problem that can be estimated directly from data.</p>
+<p>The following theorem formalizes this idea.<br/>
+It shows that the seemingly complex minimax optimization can be equivalently rewritten as a single convex quadratic program, which not only makes computation feasible but also clarifies the interpretation of the learned model.</p>
+<p>We introduce new notations first. For each labeled source domain <span class="arithmatex">\(1\leq l\leq L\)</span>, let</p>
+<div class="arithmatex">\[
+f^{(l)}(x) := \mathbb{E}\bigl[Y^{(l)}\mid X^{(l)}=x\bigr]
+\]</div>
+<p>denote the conditional mean (or conditional outcome model). We further define the corresponding noise as</p>
+<div class="arithmatex">\[
+\varepsilon^{(l)} = Y^{(l)} - f^{(l)}\bigl(X^{(l)}\bigr),
+\]</div>
+<p>with the noise level</p>
+<div class="arithmatex">\[
+\bigl[\sigma^{(l)}\bigr]^2 = \mathbb{E}\bigl[(\varepsilon^{(l)})^2 \mid X^{(l)}\bigr].
+\]</div>
+<p>Let the vector</p>
+<div class="arithmatex">\[
+\boldsymbol{\sigma}^2 = \bigl([\sigma^{(1)}]^2,\dots,[\sigma^{(L)}]^2\bigr)
+\]</div>
+<p>collect all noise levels across sources.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Identification Theorem</p>
+<p>Under regularity conditions, the above mentioned robust models admit the following expressions:</p>
+<p><strong>Reward-based.</strong></p>
+<div class="arithmatex">\[
+f_{\theta^*} = \sum_{l=1}^L q_l^* \cdot f^{(l)},
+\quad \text{with} \quad
+q^* = \arg\min_{q\in \mathcal{H}} q^\top \Gamma q .
+\]</div>
+<p><strong>Squared-error based.</strong></p>
+<div class="arithmatex">\[
+f_{\theta^{\mathrm{sq}}} = \sum_{l=1}^L q_l^{\mathrm{sq}} \cdot f^{(l)},
+\quad \text{with} \quad
+q^{\mathrm{sq}} = \arg\min_{q\in \mathcal{H}}
+\left( q^\top \Gamma q - q^\top (\gamma + \boldsymbol{\sigma}^2) \right) .
+\]</div>
+<p><strong>Regret-based</strong> (only works with no prior, i.e. <span class="arithmatex">\(\mathcal{H}=\Delta^L\)</span>).</p>
+<div class="arithmatex">\[
+f_{\theta^{\mathrm{reg}}} = \sum_{l=1}^L q_l^{\mathrm{reg}} \cdot f^{(l)},
+\quad \text{with} \quad
+q^{\mathrm{reg}} = \arg\min_{q\in \Delta^L}
+\left( q^\top \Gamma q - q^\top \gamma \right) .
+\]</div>
+<p>Here, <span class="arithmatex">\(\Gamma\in \mathbf{R}^{L\times L}\)</span> is a symmetric matrix defined by</p>
+<div class="arithmatex">\[
+\Gamma_{k,l}= \mathbb{E}\bigl[f^{(k)}(X^{\mathrm{Q}}) f^{(l)}(X^{\mathrm{Q}})\bigr]
+\quad \text{for } k,l\in \{1,\dots,L\},
+\]</div>
+<p>and <span class="arithmatex">\(\gamma=\mathrm{diag}(\Gamma)\)</span> is the vector containing the diagonal entries.</p>
+</div>
+<p>This identification theorem reveals that all three types of robust models can be expressed as a <strong>mixture</strong> of source conditional models <span class="arithmatex">\(\{f^{(l)}\}\)</span>, with the mixture weights determined by solving a convex quadratic program.<br/>
+In practice, this result provides a clear and efficient computational recipe for learning the robust model:</p>
+<ol>
+<li><strong>Estimate source models:</strong> fit the conditional outcome models <span class="arithmatex">\(\{f^{(l)}\}\)</span> using labeled data from each source domain.</li>
+<li><strong>Apply to target:</strong> apply these fitted models to the unlabeled target covariate data to estimate the covariance matrix <span class="arithmatex">\(\Gamma\)</span>, and solve the corresponding quadratic program to obtain the optimal weights.</li>
+<li><strong>Aggregate models:</strong> construct the final robust predictor by combining the source models using the learned weights.</li>
+</ol>
+<p>See Figure <a href="#fig-1">1</a> for the visualization of this procedure.</p>
+<figure class="wide-caption" id="fig-1">
+<p><img alt="Identification procedure" src="/assets/identification.png"/>
+</p>
+<figcaption>
+    Figure 1. The source models <span class="arithmatex">\(\{f^{(l)}\}\)</span> are trained on their own domains, evaluated on target covariates to compute <span class="arithmatex">\(q^*\)</span>, and aggregated to form the robust model. (<a href="#ref-wang2023distributionally">Wang et al. (2023)</a>)
+  </figcaption>
+</figure>
+<h2 id="interpretation-and-comparison"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.3</span> Interpretation and Comparison<a class="headerlink" href="#interpretation-and-comparison" title="Permanent link">¶</a></h2>
+<h3 id="geometric-interpretation"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.3.1</span> Geometric Interpretation<a class="headerlink" href="#geometric-interpretation" title="Permanent link">¶</a></h3>
+<p>The reward-based CGDRO model has a simple geometric intuition. The aggregated model is
+<span class="arithmatex">\(f_q(x)=\sum_{l=1}^L q_l\, f^{(l)}(x)\)</span>. Its objective can be rewritten as</p>
+<div class="arithmatex">\[
+q^\top \Gamma q
+= \mathbb{E}_{X\sim \mathrm{Q}_X}\!\left[f_q(X)^2\right],
+\]</div>
+<p>which measures how far the combined model is from the origin on the target covariates.</p>
+<p>Figure <a href="#fig-2">2</a> gives a clear geometric picture:</p>
+<ul>
+<li><strong>Without any prior</strong>, CGDRO selects the point inside the convex hull of the source models that is <em>closest to the origin</em>, i.e., the most stable combination across sources.</li>
+<li><strong>With prior constraints</strong>, CGDRO still picks the point <em>closest to the origin</em> but within the restricted feasible region.</li>
+</ul>
+<p>This explains why CGDRO naturally removes heterogeneous effects.<br/>
+Suppose each source model decomposes as</p>
+<div class="arithmatex">\[
+f^{(l)}(x) = f_1(x_1) + f_2^{(l)}(x_2),
+\]</div>
+<p>where the shared part <span class="arithmatex">\(f_1\)</span> is consistent across domains, while the heterogeneous part <span class="arithmatex">\(f_2^{(l)}\)</span> fluctuates around zero.<br/>
+The point closest to the origin is simply the shared component <span class="arithmatex">\(f_1\)</span>, which is exactly what the reward-based model returns.</p>
+<figure class="wide-caption" id="fig-2">
+<p><img alt="Geometric illustration" src="/assets/illu-DRoL.png"/>
+</p>
+<figcaption>
+    Figure 2. The reward-based model selects the point in the convex hull closest to the origin, preserving only the stable shared component. (<a href="#ref-wang2023distributionally">Wang et al. (2023)</a>)
+  </figcaption>
+</figure>
+<hr/>
+<h3 id="comparison-of-losses"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.3.2</span> Comparison of Losses<a class="headerlink" href="#comparison-of-losses" title="Permanent link">¶</a></h3>
+<p>Considering a simple case with <span class="arithmatex">\(L=3\)</span> source models, Figure <a href="#fig-3">3</a> illustrates how the three CGDRO formulations behave.</p>
+<ul>
+<li>
+<p><strong>Reward-based (ours):</strong><br/>
+  Finds the point <em>closest to the origin</em> → captures the stable shared structure.</p>
+</li>
+<li>
+<p><strong>Squared-error based:</strong><br/>
+  Sensitive to noise. If one source is much noisier, the solution shifts toward that noisy model.</p>
+</li>
+<li>
+<p><strong>Regret-based:</strong><br/>
+  Returns the center of the smallest enclosing circle, dominated by extreme points and not compatible with general prior constraints.</p>
+</li>
+</ul>
+<figure class="wide-caption" id="fig-3">
+<p><img alt="Loss comparison" src="/assets/illu-loss_compare.png"/>
+</p>
+<figcaption>
+    Figure 3. Different losses lead to different aggregation behaviors. (<a href="#ref-wang2023distributionally">Wang et al. (2023)</a>)
+  </figcaption>
+</figure>
+<p>The main differences are summarized below:</p>
+<p align="center"><font size="2">*Table: Comparison of CGDRO objectives and their behaviors.*</font></p>
+<div class="center">
+<table>
+<thead>
+<tr>
+<th><strong>Loss type</strong></th>
+<th><strong>Squared Error</strong></th>
+<th><strong>Regret</strong></th>
+<th><strong>Reward (Ours)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Aggregation independent of noise levels</td>
+<td>✗</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Works with arbitrary convex prior set <span class="arithmatex">\(\mathcal{H}\)</span></td>
+<td>✓</td>
+<td>✗</td>
+<td>✓</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="statistical-inference"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4</span> Statistical Inference<a class="headerlink" href="#statistical-inference" title="Permanent link">¶</a></h2>
+<p>The package provides statistical inference tools for the <em>linear model</em> case, where each source domain follows the conditional mean model</p>
+<div class="arithmatex">\[
+f^{(l)}(x) = \mathbb{E}\bigl[Y^{(l)}\mid X^{(l)}=x\bigr] = \beta^{(l)\top} x.
+\]</div>
+<p>At present, the inference functionality in <strong>CGDRO</strong> focuses primarily on the reward-based robust model, which seeks to find a coefficient vector <span class="arithmatex">\(\beta^*\)</span> that maximizes the worst-case explained variance:</p>
+<div class="arithmatex">\[
+\beta^* = \arg\max_{\beta\in \mathbf{R}^d} \min_{T\in \mathcal{C}} \mathbb{E}_{T}\bigl[Y^2 - (Y-\beta^\top X)^2\bigr].
+\]</div>
+<p>Nonetheless, the same methodology can be extended to alternative loss formulations, including squared-error or regret-based robust models. </p>
+<p>From the identification theorem, <span class="arithmatex">\(\beta^*\)</span> admits an explicit mixture representation:</p>
+<div class="arithmatex">\[
+\beta^* = \sum_{l=1}^L q_l^*\cdot \beta^{(l)}, 
+\quad \text{with} \quad
+q^*=\arg\min_{q\in \Delta^L} q^\top \Gamma q,
+\]</div>
+<p>and the matrix <span class="arithmatex">\(\Gamma\in \mathbf{R}^{L\times L}\)</span> is identified as</p>
+<div class="arithmatex">\[
+\Gamma_{k,l} = \beta^{(k)\top}\, \mathbb{E}\bigl[X^{\mathrm{Q}} X^{\mathrm{Q}\top}\bigr]\, \beta^{(l)},
+\quad \text{for } 1\leq k,l\leq L.
+\]</div>
+<p>We provide interval estimates and hypothesis tests for each individual coordinate <span class="arithmatex">\(\beta_j^*\)</span> with <span class="arithmatex">\(1\leq j\leq d\)</span>, while inference for general linear contrasts <span class="arithmatex">\(\omega^\top \beta^*\)</span> with user-specified <span class="arithmatex">\(\omega\in \mathbf{R}^d\)</span> follows as a straightforward extension of the same methodology. For readers interested in the theoretical development and technical details underlying the following discussions, we refer to \citet{guo2024statistical}, which provides a comprehensive treatment of the statistical properties of the CGDRO estimator.</p>
+<h3 id="core-challenge"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4.1</span> Core Challenge<a class="headerlink" href="#core-challenge" title="Permanent link">¶</a></h3>
+<p>As discussed earlier, the identification strategy suggests a three-step estimation procedure:</p>
+<ol>
+<li>
+<p><strong>Fit source-specific models:</strong> estimate <span class="arithmatex">\(\hat{\beta}^{(l)}\)</span> on each labeled source domain.</p>
+</li>
+<li>
+<p><strong>Apply to target domain:</strong> compute the empirical matrix <span class="arithmatex">\(\widehat{\Gamma}\)</span> using the target covariates <span class="arithmatex">\(\{X_i^{\mathrm{Q}}\}_{i=1}^N\)</span>:</p>
+<div class="arithmatex">\[
+\widehat{\Gamma}_{k,l}
+= \hat{\beta}^{(k)\top}
+  \left(\frac{1}{N}\sum_{i=1}^N X_i^{\mathrm{Q}} X_i^{\mathrm{Q}\top}\right)
+  \hat{\beta}^{(l)},
+\qquad 1 \le k,l \le L.
+\]</div>
+</li>
+<li>
+<p><strong>Aggregate across sources:</strong> solve the quadratic program:</p>
+<div class="arithmatex">\[
+\hat{\beta}
+= \sum_{l=1}^L \hat{q}_l \cdot \hat{\beta}^{(l)}, 
+\qquad
+\hat{q}=\arg\min_{q\in \Delta^L} q^\top \widehat{\Gamma} q.
+\]</div>
+</li>
+</ol>
+<p>While this plug-in approach is computationally simple, it poses substantial challenges for statistical inference. In particular, the asymptotic distribution of the data-driven weight 
+<span class="arithmatex">\(\hat{q}\)</span> is non-Gaussian in general, making classic asymptotic inference tools unreliable. Two representative scenarios of difficulty are outlined below.</p>
+<ul>
+<li>
+<p><strong>Non-regularity.</strong><br/>
+  Because the optimal weights are constrained within the simplex <span class="arithmatex">\(\Delta^L\)</span>, the true weight vector <span class="arithmatex">\(q^*\)</span> may lie on or near the boundary of the feasible region. In such cases, sampling fluctuations can cause <span class="arithmatex">\(\hat{q}\)</span> to “hit” the boundary, producing a distribution that contains point masses or truncation effects, violating the standard smoothness assumptions required for asymptotic normality.</p>
+</li>
+<li>
+<p><strong>Instability.</strong><br/>
+  When two or more sources exhibit nearly identical conditional models, say, <span class="arithmatex">\(\beta^{(k)}\approx \beta^{(l)}\)</span>, the corresponding values in <span class="arithmatex">\(\Gamma\)</span> become almost collinear. This near-degeneracy makes the optimal solution <span class="arithmatex">\(q^*\)</span> highly sensitive to small perturbations in the empirical estimates of <span class="arithmatex">\(\Gamma\)</span>. Even minor finite-sample variations can cause large, discontinuous jumps in <span class="arithmatex">\(\hat{q}\)</span>, resulting in an unstable limiting distribution.</p>
+</li>
+</ul>
+<p>These issues are illustrated in Figure <a href="#fig-4">4</a>.  </p>
+<p>We consider three representative scenarios:<br/>
+- (i) nonregularity combined with instability,<br/>
+- (ii) pure nonregularity, and
+- (iii) asymptotic normality.  </p>
+<p>The top row of the figure shows the histograms of the fitted robust model estimates, while the bottom row displays the corresponding histograms of the estimated weights. In each plot, the red vertical line marks the true value, and the blue dashed line indicates the empirical mean of the fitted robust model. All results are summarized from 500 Monte Carlo simulations.</p>
+<figure class="wide-caption" id="fig-4">
+<p><img alt="Inference challenges" src="/assets/illus-challenge.png"/>
+</p>
+<figcaption>
+    Figure 4. Illustration of statistical inference under nonregularity and instability. (<a href="#ref-guo2024statistical">Guo et al. (2024)</a>)
+  </figcaption>
+</figure>
+<h3 id="perturbation-based-procedure"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4.2</span> Perturbation-based Procedure<a class="headerlink" href="#perturbation-based-procedure" title="Permanent link">¶</a></h3>
+<p>As discussed above, the main challenge in inference arises from the nonstandard limiting distribution of the estimated weight vector <span class="arithmatex">\(q^*\)</span>, which invalidates classical asymptotic approximations. We now introduce the main idea of the proposed perturbation-based inference procedure to overcome this challenge.</p>
+<p>To gain intuition, consider a hypothetical scenario where the true optimal weight <span class="arithmatex">\(q^*\)</span> were known. In that case, one could form a semi-oracle estimator</p>
+<div class="arithmatex">\[
+\hat{\beta}^{\mathrm{ora}} := \sum_{l=1}^L q^*_l \cdot \hat{\beta}^{(l)},
+\]</div>
+<p>whose uncertainty can be analyzed using standard asymptotic tools. This is because, conditional on <span class="arithmatex">\(q^*\)</span>, the randomness in <span class="arithmatex">\(\hat{\beta}^{\mathrm{ora}}\)</span> comes solely from the estimation errors of the source-specific models <span class="arithmatex">\(\{\hat{\beta}^{(l)}\}_l\)</span>, for which classical asymptotic theory applies.</p>
+<p>However, in practice, <span class="arithmatex">\(q^*\)</span> is unknown and must be approximated in a data-driven manner. To account for this, the perturbation-based inference procedure decomposes the total uncertainty of the robust estimator <span class="arithmatex">\(\hat{\beta}\)</span> into two components:</p>
+<ol>
+<li><strong>Uncertainty from estimating the optimal weight</strong> <span class="arithmatex">\(q^*\)</span>,</li>
+<li><strong>Uncertainty from estimating source-specific models</strong> <span class="arithmatex">\(\{\hat{\beta}^{(l)}\}\)</span>.</li>
+</ol>
+<p>Below we summarize the perturbation-based inference procedure implemented in <strong>CGDRO</strong>.</p>
+<p>Recall that the estimated optimal weight vector is obtained by solving</p>
+<div class="arithmatex">\[
+\hat{q} = \arg\min_{q\in \Delta^L}\, q^\top \widehat{\Gamma} q,
+\]</div>
+<p>where <span class="arithmatex">\(\widehat{\Gamma}\)</span> is the empirical estimate of <span class="arithmatex">\(\Gamma\)</span>. Under standard regularity conditions, the estimator <span class="arithmatex">\(\widehat{\Gamma}\)</span> satisfies an asymptotic linear expansion:</p>
+<div class="arithmatex">\[
+\widehat{\mathbf{V}}^{-1/2}\,(\widehat{\Gamma} - \Gamma)
+\;\overset{d}{\longrightarrow}\;
+\mathcal{N}(0, I),
+\]</div>
+<p>where <span class="arithmatex">\(\widehat{\mathbf{V}}\)</span> consistently estimates the covariance matrix of <span class="arithmatex">\(\widehat{\Gamma}\)</span>.</p>
+<hr/>
+<h3 id="perturbation-steps"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4.3</span> <strong>Perturbation steps</strong><a class="headerlink" href="#perturbation-steps" title="Permanent link">¶</a></h3>
+<ol>
+<li>
+<p><strong>Generate perturbed versions of</strong> <span class="arithmatex">\(\widehat{\Gamma}\)</span>:</p>
+<div class="arithmatex">\[
+\widehat{\Gamma}^{[m]}
+\sim
+\mathcal{N}\!\left( \widehat{\Gamma},\; \widehat{\mathbf{V}} \right),
+\qquad m = 1,2,\dots,M .
+\]</div>
+</li>
+<li>
+<p><strong>Solve a QP for each perturbed matrix</strong>:</p>
+<div class="arithmatex">\[
+\hat{q}^{[m]}
+=
+\arg\min_{q\in \Delta^L}
+q^\top \widehat{\Gamma}^{[m]} q .
+\]</div>
+</li>
+<li>
+<p><strong>Construct perturbed robust estimators</strong>:</p>
+<div class="arithmatex">\[
+\hat{\beta}^{[m]}
+= \sum_{l=1}^L \hat{q}^{[m]}_l\,\hat{\beta}^{(l)} .
+\]</div>
+<p>For each <span class="arithmatex">\(\hat{\beta}^{[m]}\)</span>, compute the corresponding confidence interval:</p>
+<div class="arithmatex">\[
+\mathrm{CI}^{[m]} \quad \text{(based on asymptotic distribution of } \hat{\beta}^{(l)} \text{)} .
+\]</div>
+</li>
+<li>
+<p><strong>Combine intervals</strong> </p>
+<p>Because one of the perturbed matrices will (with high probability) approximate the true <span class="arithmatex">\(\Gamma\)</span> closely, the final confidence interval is constructed as:</p>
+<div class="arithmatex">\[
+\mathrm{CI}
+=
+\bigcup_{m=1}^M \mathrm{CI}^{[m]} .
+\]</div>
+</li>
+</ol>
+<p>This <strong>union-of-intervals</strong> guarantees valid coverage <strong>even under nonregularity or instability</strong>, making inference robust to  even in nonregular or unstable regimes.</p>
+<h2 id="references"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.5</span> References<a class="headerlink" href="#references" title="Permanent link">¶</a></h2>
+<p><span id="ref-guo2024statistical"></span>
+<strong>Guo, Z.</strong> (2024). <em>Statistical inference for maximin effects: Identifying stable associations across multiple studies.</em><br/>
+<em>Journal of the American Statistical Association</em>, 119(547), 1968–1984.<br/>
+<a href="https://doi.org/10.1080/01621459.2023.2258469">Paper link</a></p>
+<p><span id="ref-wang2023distributionally"></span>
+<strong>Wang, Z.</strong>, <strong>Bühlmann, P.</strong>, &amp; <strong>Guo, Z.</strong> (2023). <em>Distributionally robust machine learning with multi-source data.</em><br/>
+<em>arXiv preprint</em> <a href="https://arxiv.org/abs/2309.02211">arXiv:2309.02211</a></p>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">
+      Copyright © 2025
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+<div class="md-social">
+<a class="md-social__link" href="https://github.com/jaon11/CGDRO-Py" rel="noopener" target="_blank" title="CGDRO Python repo">
+<svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+</a>
+<a class="md-social__link" href="https://github.com/jaon11/CGDRO" rel="noopener" target="_blank" title="CGDRO R repo">
+<svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "toc.follow", "content.code.copy", "search.suggest", "search.highlight"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+<script src="../../javascripts/mathjax.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</body>
+</html>

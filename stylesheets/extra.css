@@ -1,0 +1,407 @@
+/* ================================
+   CGDRO — Site Extras (Material MkDocs)
+   File: docs/stylesheets/extra.css
+   ================================ */
+
+/* ---- Brand color variables (light mode defaults) ---- */
+:root {
+  --cgdro-lightgreen: #7FB8E6;   /* Light Blue */
+  --cgdro-yellowgreen: #5CAFE0;  /* Medium Blue */
+  --cgdro-gold: #3C8DC5;         /* Deep Blue */
+}
+
+/* ======================================
+   HOMEPAGE FULL-BLEED (no sidebars)
+   ====================================== */
+[data-md-page="index"] .md-main        { padding: 0; }
+[data-md-page="index"] .md-main__inner { margin: 0; }
+[data-md-page="index"] .md-content     { margin: 0; max-width: none; }
+[data-md-page="index"] .md-content__inner { margin: 0; padding: 0; }
+[data-md-page="index"] .md-sidebar--primary,
+[data-md-page="index"] .md-sidebar--secondary { display: none; }
+
+/* Fix homepage grid so content starts flush under header */
+[data-md-page="index"] .md-main__inner {
+  grid-template-columns: 0 minmax(0, 1fr) 0 !important;
+}
+[data-md-page="index"] .md-content {
+  grid-column: 1 / -1 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  max-width: none !important;
+  width: 100% !important;
+}
+[data-md-page="index"] .md-content__inner,
+[data-md-page="index"] .md-typeset,
+[data-md-page="index"] .md-grid {
+  margin: 0 !important;
+  padding: 0 !important;
+  max-width: none !important;
+}
+
+/* ======================================
+   Landing hero (half-screen)
+   ====================================== */
+.cgdro-hero {
+  position: relative;
+  min-height: clamp(28rem, 52svh, 42rem);
+  height: auto;
+  width: 100% !important;
+  background:none,
+    url('../assets/home_bg.png') center/cover no-repeat;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: clamp(2.25rem, 4.5svh, 3.5rem) 8vw clamp(2.5rem, 6svh, 5rem);
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+/* Overlay card */
+.cgdro-hero__overlay {
+  background: none;
+  border-radius: 1.25rem;
+  padding: 2.25rem 2rem;
+  max-width: 840px;
+  text-align: left;
+  backdrop-filter: none;
+  position: relative;
+  z-index: 2;
+}
+
+/* Title + Subtitle */
+.md-typeset .cgdro-hero__title {
+  margin: 0 0 0.75rem 0;
+  color: #ffffff !important;
+  font-size: clamp(1.9rem, 3.4vw, 3.2rem);
+  line-height: 1.15;
+  font-weight: 800 !important;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+.cgdro-hero__title .enumerate-headings-plugin,
+.cgdro-hero__title .enumerate-headings-plugins {
+  display: none;
+}
+.md-typeset .cgdro-hero__subtitle {
+  margin: 0 0 1.25rem 0;
+  color: #ffffff !important;
+  opacity: 0.95;
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+}
+
+.cgdro-hero__actions { margin-top: 0.5rem; }
+.cgdro-hero__actions .md-button { margin-right: 0.75rem; }
+
+.md-main__inner { margin-top: 0; }
+
+/* ======================================
+   Hero Buttons (Primary + Secondary)
+   ====================================== */
+
+/* 主按钮（Get started） */
+.cgdro-hero__actions .md-button--primary {
+  background-color: #7FB8E6;
+  color: #0B3954;
+  border: 2px solid #0B3954;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+.cgdro-hero__actions .md-button--primary:hover {
+  background-color: #3C8DC5;
+  color: #ffffff;
+  border-color: #0B3954;
+}
+.cgdro-hero__actions .md-button--primary:focus-visible {
+  outline: 3px solid #3C8DC5;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px #0006;
+}
+
+/* 次按钮（Learn more） */
+.cgdro-hero__actions .md-button {
+  background-color: transparent;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  font-weight: 500;
+  transition: all 0.25s ease;
+}
+.cgdro-hero__actions .md-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: #7FB8E6;
+  color: #7FB8E6;
+}
+.cgdro-hero__actions .md-button:focus-visible {
+  outline: 3px solid #7FB8E6;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px #0006;
+}
+
+/* 按钮容器间距 */
+.cgdro-hero__actions {
+  margin-top: 0.5rem;
+}
+.cgdro-hero__actions .md-button {
+  margin-right: 0.75rem;
+}
+
+/* 小节标题色保持一致 */
+#learn-more h2 { color: #7FB8E6; }
+#learn-more { scroll-margin-top: 72px; }
+
+/* ======================================
+   Header & tabs (logo → small text)
+   ====================================== */
+
+/* 使用 Material 默认 header 颜色，不再强行覆盖 */
+/* 这里只做 logo 样式定制：隐藏图片/图标，用文字 CGDRO 替代 */
+.md-header__button.md-logo {
+  display: flex;
+  align-items: center;
+  padding-left: 0.35rem;
+  padding-right: 0.75rem;
+}
+
+/* 隐藏 logo 图片 / svg */
+.md-header__button.md-logo img,
+.md-header__button.md-logo svg {
+  display: none;
+}
+
+/* 用一行小字 “CGDRO” 作为文字 logo */
+.md-header__button.md-logo::after {
+  content: "CGDRO";
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: inherit;          /* 跟随主题 header 文字颜色 */
+}
+
+/* Keep top navigation tabs visible on desktop/tablet widths even when
+   the browser sidebar narrows the viewport. Mobile still uses the drawer. */
+@media (min-width: 900px) {
+  [data-md-page="index"] .md-tabs {
+    display: block;
+  }
+  [data-md-page="index"] .md-header__button[for="__drawer"] {
+    display: none;
+  }
+}
+
+/* ======================================
+   Footer
+   ====================================== */
+footer.md-footer {
+  background: linear-gradient(
+    90deg,
+    var(--cgdro-lightgreen) 0%,
+    var(--cgdro-yellowgreen) 50%,
+    var(--cgdro-gold) 100%
+  );
+  color: #fff;
+}
+
+/* ======================================
+   Extra repo icons
+   ====================================== */
+.cgdro-header-links {
+  position: absolute;
+  top: 0.5rem;
+  right: 4rem;
+  display: flex;
+  gap: 0.5rem;
+}
+.cgdro-header-link {
+  color: var(--md-default-fg-color, #fff);
+  opacity: 0.85;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.cgdro-header-link:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* ======================================
+   Dark Mode
+   ====================================== */
+[data-md-color-scheme="slate"] {
+  --cgdro-lightgreen: #A5D8F3;
+  --cgdro-yellowgreen: #7FC3EB;
+  --cgdro-gold: #4B9BD5;
+}
+[data-md-color-scheme="slate"] .cgdro-hero__overlay {
+  background: rgba(0, 0, 0, 0.55);
+}
+[data-md-color-scheme="slate"] .cgdro-hero {
+  background:
+    linear-gradient(
+      120deg,
+      rgba(165,216,243,0.5),
+      rgba(127,195,235,0.5),
+      rgba(75,155,213,0.35)
+    ),
+    url('../assets/home_bg.png') center/cover no-repeat;
+}
+[data-md-color-scheme="slate"] .cgdro-hero__title   {
+  color: #ffffff !important;
+  font-weight: 800 !important;
+}
+[data-md-color-scheme="slate"] .cgdro-hero__subtitle{
+  color: #ffffff !important;
+  opacity: 0.95;
+}
+[data-md-color-scheme="slate"] .cgdro-hero__actions .md-button--primary {
+  background-color: var(--cgdro-gold);
+  color: #222;
+}
+[data-md-color-scheme="slate"] .cgdro-hero__actions .md-button--primary:hover {
+  background-color: var(--cgdro-yellowgreen);
+  color: #000;
+}
+[data-md-color-scheme="slate"] .cgdro-hero__actions .md-button {
+  border-color: var(--cgdro-lightgreen);
+  color: var(--cgdro-lightgreen);
+}
+[data-md-color-scheme="slate"] .cgdro-hero__actions .md-button:hover {
+  background-color: var(--cgdro-lightgreen);
+  color: #111;
+}
+[data-md-color-scheme="slate"] footer.md-footer {
+  background: linear-gradient(
+    90deg,
+    var(--cgdro-lightgreen) 0%,
+    var(--cgdro-yellowgreen) 50%,
+    var(--cgdro-gold) 100%
+  );
+  color: #111;
+}
+
+/* ======================================
+   Responsive tweaks
+   ====================================== */
+@media (max-width: 860px) {
+  .cgdro-hero {
+    min-height: clamp(26rem, 58svh, 36rem);
+    padding: clamp(2rem, 5svh, 3rem) 6vw clamp(2rem, 6svh, 4rem);
+  }
+  .cgdro-hero__overlay { padding: 1.75rem 1.5rem; }
+}
+@media (max-width: 520px) {
+  .cgdro-hero {
+    min-height: clamp(24rem, 62svh, 34rem);
+    padding: clamp(1.75rem, 4svh, 2.5rem) 4vw clamp(1.75rem, 5svh, 3rem);
+  }
+  .cgdro-hero__overlay { border-radius: 1rem; }
+}
+
+.md-header { position: relative; z-index: 5; }
+.cgdro-hero, .cgdro-hero * { pointer-events: auto; }
+
+html { scroll-behavior: smooth; }
+
+/* ======================================
+   Float image / layout helpers
+   ====================================== */
+
+/* Float image on the right, exactly half the content width */
+.md-typeset .float-right {
+  float: right;
+  width: 50%;
+  max-width: none;
+  height: auto;
+  display: block;
+  margin: 0 0 0.75rem 1rem;
+}
+
+/* Small screens: stack full width */
+@media (max-width: 900px) {
+  .md-typeset .float-right {
+    float: none;
+    width: 50%;
+    margin: 0.5rem 0;
+  }
+}
+
+/* Clear floats after sections */
+.md-typeset .clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Two-column section: left text (50%), right image (50%) */
+.md-typeset .two-col {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+.md-typeset .two-col .col {
+  flex: 1 1 50%;
+  min-width: 0;
+}
+.md-typeset .two-col img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+/* Mobile: stack full width */
+@media (max-width: 900px) {
+  .md-typeset .two-col {
+    display: block;
+  }
+  .md-typeset .two-col .col {
+    width: 100%;
+  }
+}
+
+/* ======================================
+   Site width (wider pages)
+   ====================================== */
+
+/* 加宽整体内容区域 */
+.md-grid {
+  max-width: 78rem; /* ≈1248px，可按需要调整 */
+}
+
+
+
+.center 
+{
+  width: auto;
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* 让带 wide-caption 的 figure 占满内容区宽度 */
+.md-typeset figure.wide-caption {
+  display: block !important;      /* 覆盖 display: table */
+  width: 100% !important;
+  max-width: 100% !important;     /* 关键：干掉主题的 max-width 限制 */
+  margin: 1.5rem 0 !important;
+  text-align: center;
+}
+
+/* 图片 70% 宽、居中 */
+.md-typeset figure.wide-caption img {
+  max-width: 70%;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* caption 占满整行，而不是和图片同宽 */
+.md-typeset figure.wide-caption > figcaption {
+  display: block;
+  width: 100%;
+  max-width: 100% !important;     /* 关键：覆盖 figcaption 的 max-width */
+  margin-top: 0.5rem;
+  font-style: italic;
+  text-align: center;
+}

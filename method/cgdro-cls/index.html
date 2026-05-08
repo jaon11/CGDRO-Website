@@ -706,7 +706,7 @@ smooth but non-quadratic objective, the minimization over <span class="arithmate
 <p><strong>Empirical Illustration.</strong>
 Figure <a href="#rate">1</a> reports the estimation error of the CGDRO classifier under covariate shift for two settings: <strong>S1</strong> (binary classification) and <strong>S2</strong> (multi-class classification). In both scenarios, the proposed estimator exhibits a clear <span class="arithmatex">\(\mathcal{O}(\sqrt{d/n})\)</span> convergence pattern as the source sample size increases. The fitted curves closely follow the <span class="arithmatex">\(n^{-1/2}\)</span> decay rate, validating the theoretical results in our main paper. Moreover, the estimation error decreases steadily in both binary and multi-class settings, demonstrating the robustness of the proposed CGDRO method under covariate shift.</p>
 <figure class="wide-caption" id="rate">
-<p><img alt="rate" src="../assets/rate.png"/>
+<p><img alt="rate" src="../../assets/rate.png"/>
 </p>
 <figcaption>
   Figure 1. Estimation error under covariate shift. S1: binary classification; S2: multi-class classification. In both cases, the estimation error decays at the <span class="arithmatex">\(\sqrt{d/n}\)</span> rate. (<a href="#ref-guo2025statistical">Guo et al. (2025)</a>)
@@ -739,7 +739,7 @@ nonlinear minimax problem:</p>
 </li>
 </ul>
 <figure class="wide-caption" id="infer">
-<p><img alt="Empirical distributions of γ̂₁ and θ̂₁" src="../assets/inference cls.png"/>
+<p><img alt="Empirical distributions of γ̂₁ and θ̂₁" src="../../assets/inference cls.png"/>
 </p>
 <figcaption>
     Figure 2. Empirical distributions of <span class="arithmatex">\(\widehat{\gamma}_1\)</span> and <span class="arithmatex">\(\widehat{\theta}_1\)</span> in the nonregular, unstable, and regular settings. The top row corresponds to the first source's estimated weight <span class="arithmatex">\(\widehat{\gamma}_1\)</span>, while the bottom row corresponds to the estimated <span class="arithmatex">\(\widehat{\theta}_1\)</span>. Vertical red lines indicate true parameter values, while dashed green lines show the empirical average across 500 simulations. Blue histograms with overlaid kernel density estimates depict the empirical distributions of estimates across 500 simulations. (<a href="#ref-guo2025statistical">Guo et al. (2025)</a>)

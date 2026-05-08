@@ -808,7 +808,7 @@ In practice, this result provides a clear and efficient computational recipe for
 </ol>
 <p>See Figure <a href="#fig-1">1</a> for the visualization of this procedure.</p>
 <figure class="wide-caption" id="fig-1">
-<p><img alt="Identification procedure" src="../assets/identification.png"/>
+<p><img alt="Identification procedure" src="../../assets/identification.png"/>
 </p>
 <figcaption>
     Figure 1. The source models <span class="arithmatex">\(\{f^{(l)}\}\)</span> are trained on their own domains, evaluated on target covariates to compute <span class="arithmatex">\(q^*\)</span>, and aggregated to form the robust model. (<a href="#ref-wang2023distributionally">Wang et al. (2023)</a>)
@@ -836,7 +836,7 @@ f^{(l)}(x) = f_1(x_1) + f_2^{(l)}(x_2),
 <p>where the shared part <span class="arithmatex">\(f_1\)</span> is consistent across domains, while the heterogeneous part <span class="arithmatex">\(f_2^{(l)}\)</span> fluctuates around zero.<br/>
 The point closest to the origin is simply the shared component <span class="arithmatex">\(f_1\)</span>, which is exactly what the reward-based model returns.</p>
 <figure class="wide-caption" id="fig-2">
-<p><img alt="Geometric illustration" src="../assets/illu-DRoL.png"/>
+<p><img alt="Geometric illustration" src="../../assets/illu-DRoL.png"/>
 </p>
 <figcaption>
     Figure 2. The reward-based model selects the point in the convex hull closest to the origin, preserving only the stable shared component. (<a href="#ref-wang2023distributionally">Wang et al. (2023)</a>)
@@ -860,7 +860,7 @@ The point closest to the origin is simply the shared component <span class="arit
 </li>
 </ul>
 <figure class="wide-caption" id="fig-3">
-<p><img alt="Loss comparison" src="../assets/illu-loss_compare.png"/>
+<p><img alt="Loss comparison" src="../../assets/illu-loss_compare.png"/>
 </p>
 <figcaption>
     Figure 3. Different losses lead to different aggregation behaviors. (<a href="#ref-wang2023distributionally">Wang et al. (2023)</a>)
@@ -961,7 +961,7 @@ q^*=\arg\min_{q\in \Delta^L} q^\top \Gamma q,
 - (iii) asymptotic normality.  </p>
 <p>The top row of the figure shows the histograms of the fitted robust model estimates, while the bottom row displays the corresponding histograms of the estimated weights. In each plot, the red vertical line marks the true value, and the blue dashed line indicates the empirical mean of the fitted robust model. All results are summarized from 500 Monte Carlo simulations.</p>
 <figure class="wide-caption" id="fig-4">
-<p><img alt="Inference challenges" src="../assets/illus-challenge.png"/>
+<p><img alt="Inference challenges" src="../../assets/illus-challenge.png"/>
 </p>
 <figcaption>
     Figure 4. Illustration of statistical inference under nonregularity and instability. (<a href="#ref-guo2024statistical">Guo et al. (2024)</a>)

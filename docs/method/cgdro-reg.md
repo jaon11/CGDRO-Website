@@ -191,7 +191,7 @@ In practice, this result provides a clear and efficient computational recipe for
 See Figure <a href="#fig-1">1</a> for the visualization of this procedure.
 
 <figure id="fig-1" class="wide-caption" markdown="block">
-  <img src="/assets/identification.png" alt="Identification procedure">
+  <img src="../../assets/identification.png" alt="Identification procedure">
   <figcaption markdown="span">
     Figure 1. The source models $\{f^{(l)}\}$ are trained on their own domains, evaluated on target covariates to compute $q^*$, and aggregated to form the robust model. ([Wang et al. (2023)](#ref-wang2023distributionally))
   </figcaption>
@@ -228,7 +228,7 @@ The point closest to the origin is simply the shared component $f_1$, which is e
 
 
 <figure id="fig-2" class="wide-caption" markdown="block">
-  <img src="/assets/illu-DRoL.png" alt="Geometric illustration">
+  <img src="../../assets/illu-DRoL.png" alt="Geometric illustration">
   <figcaption markdown="span">
     Figure 2. The reward-based model selects the point in the convex hull closest to the origin, preserving only the stable shared component. ([Wang et al. (2023)](#ref-wang2023distributionally))
   </figcaption>
@@ -251,7 +251,7 @@ Considering a simple case with $L=3$ source models, Figure <a href="#fig-3">3</a
 
 
 <figure id="fig-3" class="wide-caption" markdown="block">
-  <img src="/assets/illu-loss_compare.png" alt="Loss comparison">
+  <img src="../../assets/illu-loss_compare.png" alt="Loss comparison">
   <figcaption markdown="span">
     Figure 3. Different losses lead to different aggregation behaviors. ([Wang et al. (2023)](#ref-wang2023distributionally))
   </figcaption>
@@ -353,7 +353,7 @@ We consider three representative scenarios:
 The top row of the figure shows the histograms of the fitted robust model estimates, while the bottom row displays the corresponding histograms of the estimated weights. In each plot, the red vertical line marks the true value, and the blue dashed line indicates the empirical mean of the fitted robust model. All results are summarized from 500 Monte Carlo simulations.
 
 <figure id="fig-4" class="wide-caption" markdown="block">
-  <img src="/assets/illus-challenge.png" alt="Inference challenges">
+  <img src="../../assets/illus-challenge.png" alt="Inference challenges">
   <figcaption markdown="span">
     Figure 4. Illustration of statistical inference under nonregularity and instability. ([Guo et al. (2024)](#ref-guo2024statistical))
   </figcaption>

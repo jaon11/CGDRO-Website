@@ -167,7 +167,7 @@ up to a multiplicative constant factor $\tau$, whereas $n = \min{\{n_l\}_{1\leq 
 Figure <a href="#rate">1</a> reports the estimation error of the CGDRO classifier under covariate shift for two settings: **S1** (binary classification) and **S2** (multi-class classification). In both scenarios, the proposed estimator exhibits a clear $\mathcal{O}(\sqrt{d/n})$ convergence pattern as the source sample size increases. The fitted curves closely follow the $n^{-1/2}$ decay rate, validating the theoretical results in our main paper. Moreover, the estimation error decreases steadily in both binary and multi-class settings, demonstrating the robustness of the proposed CGDRO method under covariate shift.
 
 <figure id="rate" class="wide-caption" markdown="block">
-  <img src="/assets/rate.png" alt="rate">
+  <img src="../../assets/rate.png" alt="rate">
   <figcaption markdown="span">
   Figure 1. Estimation error under covariate shift. S1: binary classification; S2: multi-class classification. In both cases, the estimation error decays at the $\sqrt{d/n}$ rate. ([Guo et al. (2025)](#ref-guo2025statistical))
   </figcaption>
@@ -212,7 +212,7 @@ Recent theoretical results show that the empirical distribution of $\widehat{\th
     empirical minimax problem cannot reliably separate them.  The estimated weight $\widehat{\gamma}$ may then fluctuate widely between $0$ and $1$across samples, even when $\gamma^*$ is interior.  This instability propagates through the saddle-point mapping and leads to large variance and non-Gaussian behavior in $\widehat{\theta}$.
 
 <figure id="infer" class="wide-caption" markdown="block">
-  <img src="/assets/inference cls.png" alt="Empirical distributions of γ̂₁ and θ̂₁">
+  <img src="../../assets/inference cls.png" alt="Empirical distributions of γ̂₁ and θ̂₁">
   <figcaption markdown="span">
     Figure 2. Empirical distributions of $\widehat{\gamma}_1$ and $\widehat{\theta}_1$ in the nonregular, unstable, and regular settings. The top row corresponds to the first source's estimated weight $\widehat{\gamma}_1$, while the bottom row corresponds to the estimated $\widehat{\theta}_1$. Vertical red lines indicate true parameter values, while dashed green lines show the empirical average across 500 simulations. Blue histograms with overlaid kernel density estimates depict the empirical distributions of estimates across 500 simulations. ([Guo et al. (2025)](#ref-guo2025statistical))
   </figcaption>

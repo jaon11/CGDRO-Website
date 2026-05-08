@@ -672,25 +672,7 @@ mkdocs build -f cgdro.yml --strict
 
 MkDocs build 完成后，真正需要部署的是生成出来的 `site/` 文件夹，而不是 `docs/` 或 `cgdro.yml`。
 
-#### 方法一：Netlify 手动上传
-
-适合快速预览、临时发布，或者不想配置自动部署的情况。
-
-1. 打开 <https://app.netlify.com>。
-2. 进入 Netlify 后台的 `Sites` 页面。
-3. 找到手动部署区域，通常是 `Deploy manually` 或 `Want to deploy a new site without connecting to Git?`。
-4. 将本地生成的 `site/` 文件夹拖到上传区域。
-5. Netlify 会自动生成一个网址，例如 `https://xxx.netlify.app`。
-
-如果之后修改了文档，需要重新运行：
-
-```bash
-mkdocs build -f cgdro.yml 
-```
-
-然后再次上传新的 `site/` 文件夹。
-
-#### 方法二：GitHub Pages
+#### GitHub Pages
 
 适合长期维护的网站。文档源码放在 GitHub 仓库里，网站由 GitHub Pages 托管。
 
@@ -698,6 +680,12 @@ mkdocs build -f cgdro.yml
 
 ```bash
 mkdocs gh-deploy -f cgdro.yml
+```
+
+如果遇到mkdocs版本不兼容的情况，使用
+
+```bash
+mkdocs gh-deploy -f cgdro.yml --ignore-version
 ```
 
 这个命令会：

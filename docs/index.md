@@ -41,7 +41,7 @@ by leveraging the labeled source domains?
 
 Figure <a href="#fig-msda">1</a>  provides a visual illustration of this setup.
 <figure id="fig-msda" class="wide-caption" markdown="block">
-  <img src="../assets/MSDA.png"
+  <img src="assets/MSDA.png"
        alt="Illustration of Multi-source Unsupervised Domain Adaptation.">
   <figcaption markdown="span">
     Figure 1. Illustration of Multi-source Unsupervised Domain Adaptation.

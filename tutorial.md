@@ -87,7 +87,7 @@ CGDRO-Website/
 
 ---
 
-## 2. YAML 文件怎么写？
+## 2. YAML 文件
 
 MkDocs 的 YAML 文件决定网站的整体行为。本项目没有使用默认的 `mkdocs.yml`，而是使用 `cgdro.yml`。因此运行命令时通常要加：
 
@@ -132,14 +132,14 @@ theme:
   custom_dir: overrides
   language: en
   features:
-    - navigation.sections
-    - navigation.tabs
-    - navigation.tabs.sticky
-    - navigation.top
-    - toc.follow
-    - content.code.copy
-    - search.suggest
-    - search.highlight
+    - navigation.sections       # Render top-level navigation groups as sidebar sections.
+    - navigation.tabs           # Show top-level navigation items as tabs below the header.
+    - navigation.tabs.sticky    # Keep navigation tabs visible while scrolling.
+    - navigation.top            # Show a back-to-top button after scrolling down.
+    - toc.follow                # Keep the active table-of-contents item in view.
+    - content.code.copy         # Add copy buttons to code blocks.
+    - search.suggest            # Show search suggestions while typing.
+    - search.highlight          # Highlight search terms after opening a search result.
 ```
 
 如何告诉 Codex：
@@ -253,6 +253,13 @@ plugins:
       execute: false
 ```
 
+这一段属于 `plugins` 配置。MkDocs 插件会在构建网站时扩展默认能力；这里的 `mkdocs-jupyter` 负责把 notebook 文件转换成网站页面。
+
+| 配置 | 作用 |
+| --- | --- |
+| `mkdocs-jupyter` | 让 `.ipynb` 文件可以像 Markdown 页面一样放进 `nav` 并渲染到网站中 |
+| `execute: false` | 构建网站时不重新运行 notebook，而是使用 notebook 里已经保存的输出 |
+
 导航中直接引用 notebook：
 
 ```yaml
@@ -303,6 +310,23 @@ extra_javascript:
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 ```
 
+这一段不是主题设置，而是 Markdown 解析能力设置。`markdown_extensions` 决定 Markdown 文件里可以使用哪些额外语法；`extra_javascript` 引入 JavaScript 文件，用来支持数学公式渲染等功能。
+
+| 配置 | 作用 |
+| --- | --- |
+| `md_in_html` | 允许在 HTML 标签内部继续写 Markdown，例如 `<figure markdown="block">` |
+| `admonition` | 支持提示框语法，例如 `!!! note`、`!!! warning` |
+| `footnotes` | 支持脚注语法，例如 `[^1]` |
+| `toc.permalink: true` | 给标题生成可复制的永久链接 |
+| `pymdownx.arithmatex` | 让 Markdown 中的 LaTeX 数学公式交给 MathJax 渲染 |
+| `generic: true` | 使用通用 MathJax 兼容模式，适合 Material 官方推荐配置 |
+| `pymdownx.superfences` | 增强代码块，支持复杂嵌套和更多扩展语法 |
+| `pymdownx.details` | 支持可折叠内容块，常和 `??? note` 一起使用 |
+| `pymdownx.tabbed` | 支持内容 tabs，例如 Python/R 示例切换 |
+| `attr_list` | 允许给 Markdown 元素加属性，例如 `{ .class #id }` |
+| `javascripts/mathjax.js` | 本项目自己的 MathJax 配置文件，位于 `docs/javascripts/mathjax.js` |
+| `tex-mml-chtml.js` | MathJax 官方渲染脚本，用于显示 LaTeX 公式 |
+
 如何告诉 Codex：
 
 > 这个网站需要支持 LaTeX 数学公式、脚注、提示框、可折叠 details、tabs、代码块增强、HTML 内嵌 Markdown，以及标题永久链接。请配置 Material 常用的 Markdown extensions，并用 MathJax 渲染公式。
@@ -349,6 +373,21 @@ plugins:
       increment_across_pages: false
       strict: true
 ```
+
+这一段也是 `plugins` 配置，分别负责搜索、API 文档生成和标题自动编号。
+
+| 配置 | 作用 |
+| --- | --- |
+| `search` | 启用 MkDocs Material 内置搜索 |
+| `lang: [en, zh]` | 搜索索引同时支持英文和中文 |
+| `mkdocstrings` | 根据代码里的 docstring 自动生成 API 文档 |
+| `handlers.python` | 使用 Python handler 解析 Python 模块、类、函数 |
+| `show_source: false` | API 页面不显示源码链接/源码块 |
+| `docstring_style: google` | 按 Google 风格解析 docstring 的参数、返回值等部分 |
+| `enumerate-headings` | 自动给页面标题编号 |
+| `toc_depth: 3` | 编号和目录最多处理到三级标题 |
+| `increment_across_pages: false` | 每个页面单独从 1 开始编号，不跨页面连续编号 |
+| `strict: true` | 更严格地检查标题编号相关问题，发现问题时让构建失败 |
 
 如何告诉 Codex：
 
@@ -435,7 +474,7 @@ docs/
 
 ---
 
-## 3. 其他部分怎么写？
+## 3. 其他部分
 
 YAML 决定网站结构，但真正的网站质量主要来自内容文件、图片、样式和模板。
 
@@ -567,6 +606,8 @@ overrides/main.html
 - 全站 HTML 插槽
 - 主题级别的轻量修改
 
+本站中 `overrides/main.html` 在页脚添加了两个Github package的链接图标。
+
 协作建议：
 
 > 请先检查 `overrides/main.html` 是否已经覆盖了 Material 模板。如果需要加全站元素，请尽量通过 Material 的 block 机制扩展，不要整份复制主题模板。
@@ -625,6 +666,61 @@ mkdocs build -f cgdro.yml --strict
 - 内部链接是否写错
 - 图片路径是否无效
 - 插件配置是否有问题
+
+
+### 部署静态网站
+
+MkDocs build 完成后，真正需要部署的是生成出来的 `site/` 文件夹，而不是 `docs/` 或 `cgdro.yml`。
+
+#### 方法一：Netlify 手动上传
+
+适合快速预览、临时发布，或者不想配置自动部署的情况。
+
+1. 打开 <https://app.netlify.com>。
+2. 进入 Netlify 后台的 `Sites` 页面。
+3. 找到手动部署区域，通常是 `Deploy manually` 或 `Want to deploy a new site without connecting to Git?`。
+4. 将本地生成的 `site/` 文件夹拖到上传区域。
+5. Netlify 会自动生成一个网址，例如 `https://xxx.netlify.app`。
+
+如果之后修改了文档，需要重新运行：
+
+```bash
+mkdocs build -f cgdro.yml 
+```
+
+然后再次上传新的 `site/` 文件夹。
+
+#### 方法二：GitHub Pages
+
+适合长期维护的网站。文档源码放在 GitHub 仓库里，网站由 GitHub Pages 托管。
+
+最简单的方式是使用 MkDocs 自带命令：
+
+```bash
+mkdocs gh-deploy -f cgdro.yml
+```
+
+这个命令会：
+
+- 先构建网站
+- 把生成结果推送到仓库的 `gh-pages` 分支
+- 让 GitHub Pages 可以从 `gh-pages` 分支发布网站
+
+第一次使用前，需要在 GitHub 仓库中确认 Pages 设置：
+
+1. 打开 GitHub 仓库。
+2. 进入 `Settings` -> `Pages`。
+3. Source 选择 `Deploy from a branch`。
+4. Branch 选择 `gh-pages`。
+5. Folder 选择 `/ (root)`。
+
+之后每次更新网站，只需要重新运行：
+
+```bash
+mkdocs gh-deploy -f cgdro.yml
+```
+
+如果想用 GitHub Actions 自动部署，也可以配置 workflow，让每次 push 到 `main` 后自动运行 `mkdocs build` 并发布到 GitHub Pages。
 
 ### 查看 MkDocs 帮助
 
@@ -767,4 +863,3 @@ plugins:
 如果是在本项目中继续修改，可以说：
 
 > 请基于当前 `cgdro.yml` 和 `docs/` 结构修改，不要重建项目。新增页面时保持 CGDRO 现有写作风格、首页视觉风格和导航层级。修改后运行 strict build。
-

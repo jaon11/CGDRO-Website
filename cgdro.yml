@@ -8,18 +8,17 @@ theme:
   name: material
   custom_dir: overrides
   language: en
-  # logo: assets/logo.png
-  # favicon: assets/logo.png
+  # logo: assets/logo.png      # Site logo shown in the header/sidebar.
+  # favicon: assets/logo.png   # Browser tab and bookmark icon.
   features:
-    #- navigation.instant
-    - navigation.sections
-    - navigation.tabs           # <— add
-    - navigation.tabs.sticky    # <— keeps tabs in header while scrolling
-    - navigation.top
-    - toc.follow
-    - content.code.copy
-    - search.suggest
-    - search.highlight
+    - navigation.sections       # Render top-level navigation groups as sidebar sections.
+    - navigation.tabs           # Show top-level navigation items as tabs below the header.
+    - navigation.tabs.sticky    # Keep navigation tabs visible while scrolling.
+    - navigation.top            # Show a back-to-top button after scrolling down.
+    - toc.follow                # Keep the active table-of-contents item in view.
+    - content.code.copy         # Add copy buttons to code blocks.
+    - search.suggest            # Show search suggestions while typing.
+    - search.highlight          # Highlight search terms after opening a search result.
   palette:
     - scheme: default
       primary: "#80AF7E"

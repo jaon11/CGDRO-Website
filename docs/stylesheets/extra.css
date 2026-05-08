@@ -44,14 +44,15 @@
    ====================================== */
 .cgdro-hero {
   position: relative;
-  height: 50vh;
+  min-height: clamp(28rem, 52svh, 42rem);
+  height: auto;
   width: 100% !important;
   background:none,
     url('../assets/home_bg.png') center/cover no-repeat;
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   justify-content: flex-start;
-  padding: 8vh 8vw;
+  padding: clamp(2.25rem, 4.5svh, 3.5rem) 8vw clamp(2.5rem, 6svh, 5rem);
   box-sizing: border-box;
   z-index: 1;
 }
@@ -177,6 +178,17 @@
   color: inherit;          /* 跟随主题 header 文字颜色 */
 }
 
+/* Keep top navigation tabs visible on desktop/tablet widths even when
+   the browser sidebar narrows the viewport. Mobile still uses the drawer. */
+@media (min-width: 900px) {
+  [data-md-page="index"] .md-tabs {
+    display: block;
+  }
+  [data-md-page="index"] .md-header__button[for="__drawer"] {
+    display: none;
+  }
+}
+
 /* ======================================
    Footer
    ====================================== */
@@ -269,11 +281,17 @@ footer.md-footer {
    Responsive tweaks
    ====================================== */
 @media (max-width: 860px) {
-  .cgdro-hero { padding: 10vh 6vw; height: 48vh; }
+  .cgdro-hero {
+    min-height: clamp(26rem, 58svh, 36rem);
+    padding: clamp(2rem, 5svh, 3rem) 6vw clamp(2rem, 6svh, 4rem);
+  }
   .cgdro-hero__overlay { padding: 1.75rem 1.5rem; }
 }
 @media (max-width: 520px) {
-  .cgdro-hero { padding: 12vh 4vw; height: 46vh; }
+  .cgdro-hero {
+    min-height: clamp(24rem, 62svh, 34rem);
+    padding: clamp(1.75rem, 4svh, 2.5rem) 4vw clamp(1.75rem, 5svh, 3rem);
+  }
   .cgdro-hero__overlay { border-radius: 1rem; }
 }
 
